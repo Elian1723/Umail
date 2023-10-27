@@ -30,6 +30,7 @@ namespace correoElectronico
             TextBoxLastName.Text = lastName;
             TextBoxDate.Text = date.ToString("yyyy-MM-dd").Trim();
             DropDownListGender.SelectedIndex = gender == "masculino" ? 1 : 2;
+            LabelEmail.Text = Session["Correo"].ToString();
         }
 
         protected void Page_Load(object sender, EventArgs e)

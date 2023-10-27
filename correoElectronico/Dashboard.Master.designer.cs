@@ -78,13 +78,22 @@ namespace correoElectronico
         protected global::System.Web.UI.WebControls.Button ButtonCerrarSesion;
 
         /// <summary>
-        /// Control LinkButtonUser.
+        /// Control LabelIntRecibidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButtonUser;
+        protected global::System.Web.UI.WebControls.Label LabelIntRecibidos;
+
+        /// <summary>
+        /// Control LabelIntRecibidos2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelIntRecibidos2;
 
         /// <summary>
         /// Control LabelNombre2.

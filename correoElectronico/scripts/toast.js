@@ -1,29 +1,48 @@
 ﻿function showToastEnviado() {
-    const toastEnviado = document.getElementById('toastMensajeEnviado');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastEnviado);
+    const customToast = document.getElementById('toastMensajeEnviado');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
     toastBootstrap.show();
 }
 
 function showToastLeido() {
-    const toastLeido = document.getElementById('toastMensajeLeido');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLeido);
+    const customToast = document.getElementById('toastMensajeLeido');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
     toastBootstrap.show();
 }
 
 function showToastNoLeido() {
-    const toastNoLeido = document.getElementById('toastMensajeNoLeido');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastNoLeido);
+    const customToast = document.getElementById('toastMensajeNoLeido');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
     toastBootstrap.show();
 }
 
 function showToastEliminado() {
-    const toastEliminado = document.getElementById('toastMensajeEliminado');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastEliminado);
+    const customToast = document.getElementById('toastMensajeEliminado');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
     toastBootstrap.show();
 }
 
 function showToastArchivado() {
-    const toastArchivado = document.getElementById('toastMensajeArchivado');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastArchivado);
+    const customToast = document.getElementById('toastMensajeArchivado');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
+    toastBootstrap.show();
+}
+
+function showToastFueraPapelera() {
+    const customToast = document.getElementById('toastMensajeFueraPapelera');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
+    toastBootstrap.show();
+}
+
+function showToastFueraArchivado() {
+    const customToast = document.getElementById('toastMensajeFueraArchviado');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
+    toastBootstrap.show();
+}
+
+
+function showToastEliminadoDefinitivo() {
+    const customToast = document.getElementById('toastMensajeEliminadoDefinitivo');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
     toastBootstrap.show();
 }

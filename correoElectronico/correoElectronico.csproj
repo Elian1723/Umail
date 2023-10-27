@@ -228,6 +228,7 @@
     <Content Include="Bootstrap\Scripts\bootstrap.esm.min.js" />
     <Content Include="Bootstrap\Scripts\bootstrap.js" />
     <Content Include="Bootstrap\Scripts\bootstrap.min.js" />
+    <Content Include="Media\faq.png" />
     <Content Include="Media\favicon.ico" />
     <Content Include="Media\image-login.png" />
     <Content Include="Media\logo.png" />
@@ -235,6 +236,7 @@
     <Content Include="scripts\alert.js" />
     <Content Include="scripts\bs-validate.js" />
     <Content Include="scripts\main.js" />
+    <Content Include="scripts\modal.js" />
     <Content Include="scripts\toast.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="style.css" />
@@ -289,6 +291,9 @@
     </Compile>
     <Compile Include="DashboardPages\Recibidos.aspx.designer.cs">
       <DependentUpon>Recibidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetUmail.cs">
+      <DependentUpon>DataSetUmail.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetUmail.Designer.cs">
       <AutoGen>True</AutoGen>

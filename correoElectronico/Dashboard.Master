@@ -78,11 +78,16 @@
                             <a href="./Recibidos.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Recibidos" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
                                 <div class="w-100 px-1 py-0">
                                     <i class="fa-solid fa-inbox fs-5 rounded-5 p-3 hover-sidebar icon-item position-relative">
-                                        <span class="fs-custom position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-custom-absolute">4</span>
+                                        <span class="fs-custom position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-custom-absolute">
+                                            <asp:Label ID="LabelIntRecibidos" runat="server"></asp:Label>
+
+                                        </span>
                                     </i>
                                     <span class="span-item me-3 d-none">Recibidos</span>
                                 </div>
-                                <span class="badge bg-danger me-3 badge-custom-block d-none">4</span>
+                                <span class="badge bg-danger me-3 badge-custom-block d-none">
+                                    <asp:Label ID="LabelIntRecibidos2" runat="server"></asp:Label>
+                                </span>
                             </a>
                         </li>
 
@@ -96,14 +101,11 @@
                         </li>
 
                         <li class="page-item">
-                            <a href="./Borradores.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Borradores" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
-                                <div class="w-100 px-1 py-0">
-                                    <i class="fa-solid fa-file fs-5 rounded-5 p-3 hover-sidebar icon-item position-relative">
-                                        <span class="fs-custom position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-custom-absolute">30</span>
-                                    </i>
+                            <a href="./Borradores.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
+                                <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Borradores" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
+                                    <i class="fa-solid fa-file fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
                                     <span class="span-item me-3 d-none">Borradores</span>
                                 </div>
-                                <span class="badge bg-danger me-3 badge-custom-block d-none">30</span>
                             </a>
                         </li>
 
@@ -135,13 +137,33 @@
                         </li>
 
                         <li class="page-item d-block d-sm-none">
-                            <asp:LinkButton ID="LinkButtonUser" runat="server" class="d-flex rounded-5 bg-transparent text-white container-item text-decoration-none">
-                                <div class="w-100 px-1 py-0">
-                                    <i class="fa-solid fa-user fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
-                                    <span class="span-item d-none">
-                                        <asp:Label Text="" ID="LabelNombre2" runat="server" /></span>
+                            <div class="accordion" id="accordionSettings">
+                                <div class="accordion-item bg-transparent border-0">
+                                    <h2 class="accordion-header">
+                                        <button class="d-flex rounded-5 bg-transparent text-white container-item text-decoration-none border-0 fs-6 w-100 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <div class="w-100 px-1 py-0 d-flex align-items-center">
+                                                <i class="fa-solid fa-user fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
+                                                <span class="span-item d-none">
+                                                    <asp:Label Text="" ID="LabelNombre2" runat="server" />
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionSettings">
+                                        <div class="accordion-body">
+                                            <a href="../Ajustes.aspx" class="d-flex align-items-center rounded-5 bg-transparent text-white container-item text-decoration-none mb-2">
+                                                <i class="fa-solid fa-gear fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
+                                                <span class="span-item me-3 d-none">Ajustes</span>
+                                            </a>
+
+                                            <asp:LinkButton runat="server" CssClass="d-flex align-items-center rounded-5 bg-transparent text-white container-item text-decoration-none" OnClick="ButtonCerrarSesion_Click">
+                                                <i class="fa-solid fa-right-from-bracket fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
+                                                <span class="span-item me-3 d-none">Cerrar sesión</span>
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
                                 </div>
-                            </asp:LinkButton>
+                            </div>
                         </li>
                     </ul>
                 </nav>
@@ -181,7 +203,7 @@
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <asp:Button Text="Enviar" type="button" CssClass="btn btn-danger" runat="server" ID="ButtonEnviar" OnClick="ButtonEnviar_Click"/>
+                        <asp:Button Text="Enviar" type="button" CssClass="btn btn-danger" runat="server" ID="ButtonEnviar" OnClick="ButtonEnviar_Click" />
                     </div>
                 </div>
             </div>
@@ -252,6 +274,28 @@
                 <div class="d-flex">
                     <div class="toast-body text-dark">
                         Correo archivado
+                    </div>
+                    <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastMensajeFueraPapelera" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Correo sacado de la papelera
+                    </div>
+                    <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastMensajeFueraArchivado" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Correo desarchivado
                     </div>
                     <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>

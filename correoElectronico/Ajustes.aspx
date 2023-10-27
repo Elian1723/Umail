@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-12 mb-5 d-flex flex-column align-items-center">
                     <i class="fa-solid fa-user mb-3 fs-1"></i>
-                    <asp:Label ID="LabelEmail" Text="elianbarrios@umail.com" runat="server" CssClass="text-white" />
+                    <asp:Label ID="LabelEmail" runat="server" CssClass="text-white" />
                 </div>
 
                 <div class="col-12 col-sm-6">

@@ -12,6 +12,9 @@ namespace correoElectronico
     public partial class Dashboard : System.Web.UI.MasterPage
     {
         UsuarioTableAdapter adaptadorUsuario = new UsuarioTableAdapter();
+        CorreoTableAdapter adaptadorCorreo = new CorreoTableAdapter();
+        IndexadorTableAdapter adaptadorIndexador = new IndexadorTableAdapter();
+
         protected string emailUser;
         protected string userName;
 
@@ -30,14 +33,13 @@ namespace correoElectronico
 
                 LabelNombre.Text = userName;
                 LabelNombre2.Text = userName;
+                LabelIntRecibidos.Text = adaptadorIndexador.ObtenerRecibidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
+                LabelIntRecibidos2.Text = adaptadorIndexador.ObtenerRecibidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
             }
             else
             {
                 Response.Redirect("../Login.aspx");
             }
-            TextBoxDestino.Text = null;
-            TextBoxAsunto.Text = null;
-            TextBoxMensaje.Text = null;
         }
 
         protected void ButtonEnviar_Click(object sender, EventArgs e)
@@ -48,12 +50,23 @@ namespace correoElectronico
                 {
                     if (adaptadorUsuario.BuscarUsuario(TextBoxDestino.Text).Rows.Count > 0)
                     {
-                        string destino = TextBoxDestino.Text;
+                        int idDestino = Convert.ToInt32(adaptadorUsuario.BuscarUsuario(TextBoxDestino.Text).Rows[0]["id"]);
+                        int idRemitente = Convert.ToInt32(Session["Id"]);
                         string asunto = TextBoxAsunto.Text;
                         string mensaje = TextBoxMensaje.Text;
                         DateTime fecha = DateTime.Now;
 
 
+                        DataTable tablaID = adaptadorCorreo.ObtenerUltimoID();
+                        int newID = Convert.ToInt32(tablaID.Rows[0]["id"]) == 0 ? 0 : Convert.ToInt32(tablaID.Rows[0]["id"]) + 1;
+
+                        adaptadorCorreo.InsertarCorreo(newID, asunto, fecha, mensaje);
+                        adaptadorIndexador.InsertarIndexador(idRemitente, idDestino, false, true, true, newID);
+                        adaptadorIndexador.InsertarIndexador(idDestino, idRemitente, true, false, false, newID);
+
+                        TextBoxAsunto.Text = null;
+                        TextBoxDestino.Text = null;
+                        TextBoxMensaje.Text = null;
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "showToastEnviado", "showToastEnviado();", true);
                     }

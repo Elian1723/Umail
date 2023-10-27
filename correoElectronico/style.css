@@ -13,6 +13,14 @@ body, .card {
     z-index: 99 !important;
 }
 
+.w-10 {
+    width: 10% !important; 
+}
+
+.w-5 {
+    width: 5% !important; 
+}
+
 .content-hidden {
     overflow: hidden !important;
     display: -webkit-box !important;
@@ -61,6 +69,14 @@ body, .card {
 
 .span-item {
     height: 20px !important;
+}
+
+.hover-icon {
+    color: var(--bs-gray-600);
+}
+
+.hover-icon:hover {
+    color: var(--bs-gray-400);
 }
 
 .hover-sidebar, .hover-font, .nav, .transform-rigth-550 {
