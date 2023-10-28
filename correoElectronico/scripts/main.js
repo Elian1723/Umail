@@ -101,28 +101,28 @@ document.getElementById("TextBoxMensaje").addEventListener("keyup", e => {
     mensaje = e.target.value;
 });
 
-const ValidarCampos = async () => {
-    if (destino == null || destino == "" || destino == NaN)
-        return true;
-    else if (asunto == null || asunto == "" || asunto == NaN)
-        return true;
-    else if (mensaje == null || mensaje == "" || mensaje == NaN)
-        return true;
-    else
-        return false;
-}
+//const ValidarCampos = async () => {
+//    if (destino == null || destino == "" || destino == NaN)
+//        return true;
+//    else if (asunto == null || asunto == "" || asunto == NaN)
+//        return true;
+//    else if (mensaje == null || mensaje == "" || mensaje == NaN)
+//        return true;
+//    else
+//        return false;
+//}
 
 
-document.getElementById("ButtonEnviar").addEventListener("click", e => {
-    ValidarCampos().then(response => {
-        if (response) {
-            Swal.fire({
-                title: 'Campos incompletos',
-                icon: 'warning',
-                confirmButtonText: 'Ok'
-            })
+//document.getElementById("ButtonEnviar").addEventListener("click", e => {
+//    ValidarCampos().then(response => {
+//        if (response) {
+//            Swal.fire({
+//                title: 'Campos incompletos',
+//                icon: 'warning',
+//                confirmButtonText: 'Ok'
+//            })
 
-            e.preventDefault();
-        }
-    });
-});
+//            e.preventDefault();
+//        }
+//    });
+//});

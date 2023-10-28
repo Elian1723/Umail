@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a75a44cb4d.js" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <script src="./scripts/alert.js"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
@@ -18,7 +18,7 @@
 <body>
     <form id="form1" runat="server" class="vh-100 d-flex align-items-center needs-validation" novalidate="">
         <div class="row h-100 w-100 justify-content-center align-items-center">
-            <div class="h-75 col-12 col-md-8 col-xl-6 col-xxl-5 p-5 py-sm-4 px-xl-5 py-xl-3  bg-gray-300 rounded-3 wrap-signin h-signin">
+            <div class="h-75 col-12 col-md-8 col-xl-6 col-xxl-5 pe-0 ps-4 py-sm-4 px-xl-5 py-xl-3  bg-gray-300 rounded-3 wrap-signin h-signin">
                 <main class="row h-100 overflow-auto">
                     <div class="col-12 d-flex justify-content-center">
                         <img src="./Media/logo2.png" alt="Alternate Text" class="w-25 d-none d-xl-block" />

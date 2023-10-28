@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Enviados.aspx.cs" Inherits="correoElectronico.DashboardPages.Enviados" %>
+﻿<%@ Page Title="Enviados" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Enviados.aspx.cs" Inherits="correoElectronico.DashboardPages.Enviados" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

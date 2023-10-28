@@ -33,8 +33,21 @@ namespace correoElectronico
 
                 LabelNombre.Text = userName;
                 LabelNombre2.Text = userName;
-                LabelIntRecibidos.Text = adaptadorIndexador.ObtenerRecibidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
-                LabelIntRecibidos2.Text = adaptadorIndexador.ObtenerRecibidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
+
+                DataTable tablaRecibidos = adaptadorIndexador.ObtenerRecibidosNoLeidos(Convert.ToInt32(Session["Id"]));
+                if (tablaRecibidos.Rows.Count > 0)
+                {
+                    ContainerBadge.Visible = true;
+                    ContainerBadge2.Visible = true;
+
+                    LabelIntRecibidos.Text = adaptadorIndexador.ObtenerRecibidosNoLeidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
+                    LabelIntRecibidos2.Text = adaptadorIndexador.ObtenerRecibidosNoLeidos(Convert.ToInt32(Session["Id"])).Rows.Count.ToString();
+                }
+                else
+                {
+                    ContainerBadge.Visible = false;
+                    ContainerBadge2.Visible = false;
+                }
             }
             else
             {

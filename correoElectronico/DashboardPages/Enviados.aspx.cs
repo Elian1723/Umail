@@ -54,6 +54,7 @@ namespace correoElectronico.DashboardPages
                 }
 
                 CargarCorreos();
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
             {

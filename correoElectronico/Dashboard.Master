@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,6 +16,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <link href="./style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="~/Media/logo.ico" type="image/x-icon">
+    <script>
+        $(document).ready(function () {
+            $("#ButtonEnviar").click(function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -78,14 +86,14 @@
                             <a href="./Recibidos.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Recibidos" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
                                 <div class="w-100 px-1 py-0">
                                     <i class="fa-solid fa-inbox fs-5 rounded-5 p-3 hover-sidebar icon-item position-relative">
-                                        <span class="fs-custom position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-custom-absolute">
+                                        <span class="fs-custom position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-custom-absolute" runat="server" id="ContainerBadge">
                                             <asp:Label ID="LabelIntRecibidos" runat="server"></asp:Label>
 
                                         </span>
                                     </i>
                                     <span class="span-item me-3 d-none">Recibidos</span>
                                 </div>
-                                <span class="badge bg-danger me-3 badge-custom-block d-none">
+                                <span class="badge bg-danger me-3 badge-custom-block d-none" runat="server" id="ContainerBadge2">
                                     <asp:Label ID="LabelIntRecibidos2" runat="server"></asp:Label>
                                 </span>
                             </a>
@@ -301,7 +309,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastMensajeEliminadoDefinitivo" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Correo eliminado exitosamente
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
     </form>
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/validate.js"></script>
 </body>
 </html>

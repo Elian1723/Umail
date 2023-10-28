@@ -78,6 +78,15 @@ namespace correoElectronico
         protected global::System.Web.UI.WebControls.Button ButtonCerrarSesion;
 
         /// <summary>
+        /// Control ContainerBadge.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContainerBadge;
+
+        /// <summary>
         /// Control LabelIntRecibidos.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace correoElectronico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelIntRecibidos;
+
+        /// <summary>
+        /// Control ContainerBadge2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContainerBadge2;
 
         /// <summary>
         /// Control LabelIntRecibidos2.

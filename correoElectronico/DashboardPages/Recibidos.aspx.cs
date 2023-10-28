@@ -55,6 +55,7 @@ namespace correoElectronico.DashboardPages
                 }
 
                 CargarCorreos();
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
             {
@@ -116,8 +117,8 @@ namespace correoElectronico.DashboardPages
                 LabelMensaje.Text = GridViewCorreos.Rows[index].Cells[7].Text;
                 LabelIDCorreo.Text = $"ID: {GridViewCorreos.Rows[index].Cells[1].Text}";
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "showModalCorreo", "showModalCorreo();", true);
                 CargarCorreos();
+                ScriptManager.RegisterStartupScript(this, GetType(), "showModalCorreo", "showModalCorreo();", true);
             }
             catch (Exception ex)
             {

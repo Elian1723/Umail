@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Recibidos.aspx.cs" Inherits="correoElectronico.DashboardPages.Recibidos" %>
+﻿<%@ Page Title="Recibidos" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Recibidos.aspx.cs" Inherits="correoElectronico.DashboardPages.Recibidos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -37,7 +37,7 @@
                             <div class="d-flex">
                                 <div>
                                     <asp:LinkButton runat="server" CommandName="Leido" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
-                                        <i class="fa-solid fa-envelope rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Marcar como leído" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
+                                        <i class="fa-solid fa-envelope rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Alternar leído" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                                     </asp:LinkButton>
                                 </div>
                                 <div class="d-flex">

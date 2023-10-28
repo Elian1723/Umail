@@ -215,6 +215,7 @@
     <Content Include="Bootstrap\Content\bootstrap.min.css" />
     <Content Include="Bootstrap\Content\bootstrap.rtl.css" />
     <Content Include="Bootstrap\Content\bootstrap.rtl.min.css" />
+    <Content Include="controller.aspx" />
     <Content Include="DashboardPages\Archivados.aspx" />
     <Content Include="DashboardPages\Borradores.aspx" />
     <Content Include="DashboardPages\Eliminados.aspx" />
@@ -238,6 +239,7 @@
     <Content Include="scripts\main.js" />
     <Content Include="scripts\modal.js" />
     <Content Include="scripts\toast.js" />
+    <Content Include="scripts\validate.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
@@ -249,6 +251,13 @@
     </Compile>
     <Compile Include="Ajustes.aspx.designer.cs">
       <DependentUpon>Ajustes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="controller.aspx.cs">
+      <DependentUpon>controller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controller.aspx.designer.cs">
+      <DependentUpon>controller.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.Master.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>

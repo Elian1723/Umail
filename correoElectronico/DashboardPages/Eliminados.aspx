@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Eliminados.aspx.cs" Inherits="correoElectronico.DashboardPages.Eliminados" %>
+﻿<%@ Page Title="Eliminados" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Eliminados.aspx.cs" Inherits="correoElectronico.DashboardPages.Eliminados" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -41,7 +41,7 @@
                                     </asp:LinkButton>
                                 </div>
                                 <div class="d-flex">
-                                    <asp:LinkButton runat="server" CommandName="Eliminado" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
+                                    <asp:LinkButton runat="server" CommandName="Eliminar" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
                             <i class="fa-solid fa-trash-can rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Eliminar" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                                     </asp:LinkButton>
                                 </div>

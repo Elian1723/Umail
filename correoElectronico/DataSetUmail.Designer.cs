@@ -30,9 +30,9 @@ namespace correoElectronico {
         
         private IndexadorDataTable tableIndexador;
         
-        private global::System.Data.DataRelation relationFK_Indexador_Correo1;
+        private global::System.Data.DataRelation relationFK_Indexador_Correo;
         
-        private global::System.Data.DataRelation relationFK_Indexador_Usuario2;
+        private global::System.Data.DataRelation relationFK_Indexador_Usuario21;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -246,8 +246,8 @@ namespace correoElectronico {
                     this.tableIndexador.InitVars();
                 }
             }
-            this.relationFK_Indexador_Correo1 = this.Relations["FK_Indexador_Correo1"];
-            this.relationFK_Indexador_Usuario2 = this.Relations["FK_Indexador_Usuario2"];
+            this.relationFK_Indexador_Correo = this.Relations["FK_Indexador_Correo"];
+            this.relationFK_Indexador_Usuario21 = this.Relations["FK_Indexador_Usuario21"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,14 +264,14 @@ namespace correoElectronico {
             base.Tables.Add(this.tableCorreo);
             this.tableIndexador = new IndexadorDataTable();
             base.Tables.Add(this.tableIndexador);
-            this.relationFK_Indexador_Correo1 = new global::System.Data.DataRelation("FK_Indexador_Correo1", new global::System.Data.DataColumn[] {
+            this.relationFK_Indexador_Correo = new global::System.Data.DataRelation("FK_Indexador_Correo", new global::System.Data.DataColumn[] {
                         this.tableCorreo.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexador.id_correoColumn}, false);
-            this.Relations.Add(this.relationFK_Indexador_Correo1);
-            this.relationFK_Indexador_Usuario2 = new global::System.Data.DataRelation("FK_Indexador_Usuario2", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_Indexador_Correo);
+            this.relationFK_Indexador_Usuario21 = new global::System.Data.DataRelation("FK_Indexador_Usuario21", new global::System.Data.DataColumn[] {
                         this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexador.id_ccColumn}, false);
-            this.Relations.Add(this.relationFK_Indexador_Usuario2);
+            this.Relations.Add(this.relationFK_Indexador_Usuario21);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1039,6 +1039,8 @@ namespace correoElectronico {
             
             private global::System.Data.DataColumn columnarchivado;
             
+            private global::System.Data.DataColumn columndestacado;
+            
             private global::System.Data.DataColumn columnpapelera;
             
             private global::System.Data.DataColumn columnleido;
@@ -1120,6 +1122,14 @@ namespace correoElectronico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn destacadoColumn {
+                get {
+                    return this.columndestacado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn papeleraColumn {
                 get {
                     return this.columnpapelera;
@@ -1179,7 +1189,7 @@ namespace correoElectronico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IndexadorRow AddIndexadorRow(int id_propietario, UsuarioRow parentUsuarioRowByFK_Indexador_Usuario2, bool recibido, bool enviado, bool archivado, bool papelera, bool leido, CorreoRow parentCorreoRowByFK_Indexador_Correo1) {
+            public IndexadorRow AddIndexadorRow(int id_propietario, UsuarioRow parentUsuarioRowByFK_Indexador_Usuario21, bool recibido, bool enviado, bool archivado, bool destacado, bool papelera, bool leido, CorreoRow parentCorreoRowByFK_Indexador_Correo) {
                 IndexadorRow rowIndexadorRow = ((IndexadorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id_propietario,
@@ -1187,14 +1197,15 @@ namespace correoElectronico {
                         recibido,
                         enviado,
                         archivado,
+                        destacado,
                         papelera,
                         leido,
                         null};
-                if ((parentUsuarioRowByFK_Indexador_Usuario2 != null)) {
-                    columnValuesArray[1] = parentUsuarioRowByFK_Indexador_Usuario2[0];
+                if ((parentUsuarioRowByFK_Indexador_Usuario21 != null)) {
+                    columnValuesArray[1] = parentUsuarioRowByFK_Indexador_Usuario21[0];
                 }
-                if ((parentCorreoRowByFK_Indexador_Correo1 != null)) {
-                    columnValuesArray[7] = parentCorreoRowByFK_Indexador_Correo1[0];
+                if ((parentCorreoRowByFK_Indexador_Correo != null)) {
+                    columnValuesArray[8] = parentCorreoRowByFK_Indexador_Correo[0];
                 }
                 rowIndexadorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowIndexadorRow);
@@ -1223,6 +1234,7 @@ namespace correoElectronico {
                 this.columnrecibido = base.Columns["recibido"];
                 this.columnenviado = base.Columns["enviado"];
                 this.columnarchivado = base.Columns["archivado"];
+                this.columndestacado = base.Columns["destacado"];
                 this.columnpapelera = base.Columns["papelera"];
                 this.columnleido = base.Columns["leido"];
                 this.columnid_correo = base.Columns["id_correo"];
@@ -1241,6 +1253,8 @@ namespace correoElectronico {
                 base.Columns.Add(this.columnenviado);
                 this.columnarchivado = new global::System.Data.DataColumn("archivado", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnarchivado);
+                this.columndestacado = new global::System.Data.DataColumn("destacado", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndestacado);
                 this.columnpapelera = new global::System.Data.DataColumn("papelera", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpapelera);
                 this.columnleido = new global::System.Data.DataColumn("leido", typeof(bool), null, global::System.Data.MappingType.Element);
@@ -1248,9 +1262,11 @@ namespace correoElectronico {
                 this.columnid_correo = new global::System.Data.DataColumn("id_correo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_correo);
                 this.columnid_propietario.AllowDBNull = false;
+                this.columnid_cc.AllowDBNull = false;
                 this.columnrecibido.AllowDBNull = false;
                 this.columnenviado.AllowDBNull = false;
                 this.columnarchivado.AllowDBNull = false;
+                this.columndestacado.AllowDBNull = false;
                 this.columnpapelera.AllowDBNull = false;
                 this.columnleido.AllowDBNull = false;
                 this.columnid_correo.AllowDBNull = false;
@@ -1474,11 +1490,11 @@ namespace correoElectronico {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndexadorRow[] GetIndexadorRows() {
-                if ((this.Table.ChildRelations["FK_Indexador_Usuario2"] == null)) {
+                if ((this.Table.ChildRelations["FK_Indexador_Usuario21"] == null)) {
                     return new IndexadorRow[0];
                 }
                 else {
-                    return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Usuario2"])));
+                    return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Usuario21"])));
                 }
             }
         }
@@ -1544,11 +1560,11 @@ namespace correoElectronico {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndexadorRow[] GetIndexadorRows() {
-                if ((this.Table.ChildRelations["FK_Indexador_Correo1"] == null)) {
+                if ((this.Table.ChildRelations["FK_Indexador_Correo"] == null)) {
                     return new IndexadorRow[0];
                 }
                 else {
-                    return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Correo1"])));
+                    return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Correo"])));
                 }
             }
         }
@@ -1582,12 +1598,7 @@ namespace correoElectronico {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int id_cc {
                 get {
-                    try {
-                        return ((int)(this[this.tableIndexador.id_ccColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'id_cc\' de la tabla \'Indexador\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableIndexador.id_ccColumn]));
                 }
                 set {
                     this[this.tableIndexador.id_ccColumn] = value;
@@ -1629,6 +1640,17 @@ namespace correoElectronico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool destacado {
+                get {
+                    return ((bool)(this[this.tableIndexador.destacadoColumn]));
+                }
+                set {
+                    this[this.tableIndexador.destacadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool papelera {
                 get {
                     return ((bool)(this[this.tableIndexador.papeleraColumn]));
@@ -1664,10 +1686,10 @@ namespace correoElectronico {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public CorreoRow CorreoRow {
                 get {
-                    return ((CorreoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Correo1"])));
+                    return ((CorreoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Correo"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Correo1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Correo"]);
                 }
             }
             
@@ -1675,23 +1697,11 @@ namespace correoElectronico {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public UsuarioRow UsuarioRow {
                 get {
-                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Usuario2"])));
+                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Usuario21"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Usuario2"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Usuario21"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isid_ccNull() {
-                return this.IsNull(this.tableIndexador.id_ccColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setid_ccNull() {
-                this[this.tableIndexador.id_ccColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2480,6 +2490,7 @@ namespace correoElectronico.DataSetUmailTableAdapters {
             tableMapping.ColumnMappings.Add("recibido", "recibido");
             tableMapping.ColumnMappings.Add("enviado", "enviado");
             tableMapping.ColumnMappings.Add("archivado", "archivado");
+            tableMapping.ColumnMappings.Add("destacado", "destacado");
             tableMapping.ColumnMappings.Add("papelera", "papelera");
             tableMapping.ColumnMappings.Add("leido", "leido");
             tableMapping.ColumnMappings.Add("id_correo", "id_correo");
@@ -2496,7 +2507,7 @@ namespace correoElectronico.DataSetUmailTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[14];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        Indexador.*\r\nFROM            Indexador";
@@ -2519,72 +2530,98 @@ namespace correoElectronico.DataSetUmailTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT archivado, enviado, id_cc, id_correo, id_propietario, leido, papelera, rec" +
-                "ibido FROM Indexador WHERE (id_propietario = @idUsuario) AND (id_correo = @idCor" +
-                "reo)";
+            this._commandCollection[3].CommandText = "SELECT        id_propietario, id_cc, recibido, enviado, archivado, destacado, pap" +
+                "elera, leido, id_correo\r\nFROM            Indexador\r\nWHERE        (id_propietario" +
+                " = @idUsuario) AND (id_correo = @idCorreo)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "INSERT INTO Indexador\r\n                         (id_propietario, id_cc, recibido," +
-                " enviado, archivado, papelera, leido, id_correo)\r\nVALUES        (@idUsuario,@idD" +
-                "estino,@recibido,@enviado, 0, 0,@leido,@idCorreo)";
+            this._commandCollection[4].CommandText = "SELECT        id_propietario, id_cc, recibido, enviado, archivado, destacado, pap" +
+                "elera, leido, id_correo\r\nFROM            Indexador\r\nWHERE        (id_correo = @i" +
+                "dCorreo)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDestino", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_cc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@recibido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "recibido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enviado", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "enviado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "leido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.papelera, Indexador.leido, Indexador.id_correo, Correo.asunto, Correo.fecha, 
-                         Correo.mensaje
+            this._commandCollection[5].CommandText = "DELETE FROM Correo\r\nWHERE        (id = @idCorreo)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "DELETE FROM Indexador\r\nWHERE        (id_propietario = @idUsuario) AND (id_correo " +
+                "= @idCorreo)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "INSERT INTO Indexador\r\n                         (id_propietario, id_cc, recibido," +
+                " enviado, archivado, destacado, papelera, leido, id_correo)\r\nVALUES        (@idU" +
+                "suario,@idDestino,@recibido,@enviado, 0, 0, 0,@leido,@idCorreo)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDestino", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_cc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@recibido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "recibido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enviado", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "enviado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "leido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
 WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.papelera, Indexador.leido, Indexador.id_correo, Correo.asunto, Correo.fecha, 
-                         Correo.mensaje
-FROM            Correo INNER JOIN
-                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
-                         Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
-            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.papelera, Indexador.leido, Indexador.id_correo, Correo.asunto, Correo.fecha, 
-                         Correo.mensaje
-FROM            Correo INNER JOIN
-                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
-                         Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1)";
-            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.papelera, Indexador.leido, Indexador.id_correo, Correo.asunto, Correo.fecha, 
-                         Correo.mensaje
-FROM            Correo INNER JOIN
-                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
-                         Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "UPDATE       Indexador\r\nSET                leido = @leido\r\nWHERE        (id_propi" +
-                "etario = @idUsuario) AND (id_correo = @idCorreo)";
+            this._commandCollection[9].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "leido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[10].Connection = this.Connection;
+            this._commandCollection[10].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1)";
+            this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[11].Connection = this.Connection;
+            this._commandCollection[11].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
+            this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[12] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[12].Connection = this.Connection;
+            this._commandCollection[12].CommandText = @"SELECT        id_propietario, id_cc, recibido, enviado, archivado, destacado, papelera, leido, id_correo
+FROM            Indexador
+WHERE        (id_propietario = @idUsuario) AND (recibido = 1) AND (enviado = 0) AND (archivado = 0) AND (papelera = 0) AND (leido = 0)";
+            this._commandCollection[12].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[12].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[13] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[13].Connection = this.Connection;
+            this._commandCollection[13].CommandText = "UPDATE       Indexador\r\nSET                leido = @leido\r\nWHERE        (id_propi" +
+                "etario = @idUsuario) AND (id_correo = @idCorreo)";
+            this._commandCollection[13].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leido", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "leido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCorreo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_correo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2615,8 +2652,20 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorDataTable BuscarIndexadorGeneral(int idCorreo) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idCorreo));
+            DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetUmail.IndexadorDataTable ObtenerArchivados(int idUsuario) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[8];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
             DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
             this.Adapter.Fill(dataTable);
@@ -2628,7 +2677,7 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetUmail.IndexadorDataTable ObtenerEnviados(int idUsuario) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[9];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
             DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
             this.Adapter.Fill(dataTable);
@@ -2640,7 +2689,7 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetUmail.IndexadorDataTable ObtenerPapelera(int idUsuario) {
-            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand = this.CommandCollection[10];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
             DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
             this.Adapter.Fill(dataTable);
@@ -2652,7 +2701,19 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetUmail.IndexadorDataTable ObtenerRecibidos(int idUsuario) {
-            this.Adapter.SelectCommand = this.CommandCollection[8];
+            this.Adapter.SelectCommand = this.CommandCollection[11];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorDataTable ObtenerRecibidosNoLeidos(int idUsuario) {
+            this.Adapter.SelectCommand = this.CommandCollection[12];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
             DataSetUmail.IndexadorDataTable dataTable = new DataSetUmail.IndexadorDataTable();
             this.Adapter.Fill(dataTable);
@@ -2714,16 +2775,60 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertarIndexador(int idUsuario, global::System.Nullable<int> idDestino, bool recibido, bool enviado, bool leido, int idCorreo) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int EliminarCorreo(int idCorreo) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            command.Parameters[0].Value = ((int)(idCorreo));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int EliminarIndexador(int idUsuario, int idCorreo) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             command.Parameters[0].Value = ((int)(idUsuario));
-            if ((idDestino.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(idDestino.Value));
+            command.Parameters[1].Value = ((int)(idCorreo));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
             }
-            else {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
             }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertarIndexador(int idUsuario, int idDestino, bool recibido, bool enviado, bool leido, int idCorreo) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            command.Parameters[0].Value = ((int)(idUsuario));
+            command.Parameters[1].Value = ((int)(idDestino));
             command.Parameters[2].Value = ((bool)(recibido));
             command.Parameters[3].Value = ((bool)(enviado));
             command.Parameters[4].Value = ((bool)(leido));
@@ -2750,7 +2855,7 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int ToggleLeido(bool leido, int idUsuario, int idCorreo) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[13];
             command.Parameters[0].Value = ((bool)(leido));
             command.Parameters[1].Value = ((int)(idUsuario));
             command.Parameters[2].Value = ((int)(idCorreo));

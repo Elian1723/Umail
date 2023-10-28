@@ -43,8 +43,15 @@ namespace correoElectronico
                     {
                         if (confirmedPassword == password)
                         {
-                            adaptadorUsuario.CrearUsuario(email + "@umail.com", password, name, lastName, date, gender);
-                            ScriptManager.RegisterStartupScript(this, GetType(), "showUserCreated", "showUserCreated();", true);
+                            if (password.Length >= 5 && password.Length <= 35)
+                            {
+                                adaptadorUsuario.CrearUsuario(email + "@umail.com", password, name, lastName, date, gender);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showUserCreated", "showUserCreated();", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showPasswordLength", "showPasswordLength();", true);
+                            }
                         }
                         else
                         {

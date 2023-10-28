@@ -50,6 +50,15 @@ function showRequiredFields() {
     });
 }
 
+function showPasswordLength() {
+    Swal.fire({
+        title: 'Contraseña incorrecta',
+        text: 'La contraseña debe tener entre 5 y 35 caracteres',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+    });
+}
+
 // ----- Correctos -----
 function showChangesSaved() {
     Swal.fire({

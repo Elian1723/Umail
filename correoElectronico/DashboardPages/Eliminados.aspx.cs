@@ -107,6 +107,28 @@ namespace correoElectronico.DashboardPages
             }
         }
 
+        protected void EliminarDefinitivamente(int idCorreo)
+        {
+            try
+            {
+                adaptadorIndexador.EliminarIndexador(Convert.ToInt32(Session["Id"]), idCorreo);
+
+                if (adaptadorIndexador.BuscarIndexadorGeneral(idCorreo).Rows.Count <= 0)
+                {
+                    adaptadorIndexador.EliminarCorreo(idCorreo);
+                }
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "showToastEliminadoDefinitivo", "showToastEliminadoDefinitivo();", true);
+
+                CargarCorreos();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Ocurrió un error inesperado')</script>");
+                Response.Write($"<script>alert('{ex.Message}')</script>");
+            }
+        }
+
         protected void GridViewCorreos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
@@ -118,6 +140,9 @@ namespace correoElectronico.DashboardPages
                     break;
                 case "Ver":
                     VerCorreo(rowIndex);
+                    break;
+                case "Eliminar":
+                    EliminarDefinitivamente(Convert.ToInt32(GridViewCorreos.Rows[rowIndex].Cells[1].Text));
                     break;
             }
         }
@@ -136,8 +161,7 @@ namespace correoElectronico.DashboardPages
         {
             try
             {
-                // eliminar definitivamente el correo, usa el id de la variable de sesion y el id de correo ya lo tienes en el labelIDCorreo
-
+                EliminarDefinitivamente(Convert.ToInt32(LabelIDCorreo.Text.Replace("ID: ", "")));
 
                 CargarCorreos();
             }
