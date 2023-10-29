@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/a75a44cb4d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <link href="./style.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="~/Media/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/Media/favicon.ico" type="image/x-icon" />
     <script>
         $(document).ready(function () {
             $("#ButtonEnviar").click(function (e) {
@@ -41,8 +41,8 @@
 
                 <div class="col-lg-6 d-none d-lg-flex align-items-center">
                     <div class="input-group">
-                        <asp:TextBox ID="TextBoxBusqueda" type="text" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Buscar correo" aria-label="Buscar correo" aria-describedby="ButtonBuscar" />
-                        <asp:LinkButton ID="LinkButtonBuscar" type="button" runat="server" CssClass="btn btn-outline-secondary border-white">
+                        <asp:TextBox ID="TextBoxBusqueda" type="text" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Buscar correo" aria-label="Buscar correo" aria-describedby="ButtonBuscar" ClientIDMode="Static" />
+                        <asp:LinkButton ID="LinkButtonBuscar" type="button" runat="server" CssClass="btn btn-outline-secondary border-white" OnClick="LinkButtonBuscar_Click">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </asp:LinkButton>
                     </div>
@@ -118,19 +118,19 @@
                         </li>
 
                         <li class="page-item">
-                            <a href="./Eliminados.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
-                                <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Eliminados" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
-                                    <i class="fa-solid fa-trash-can fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
-                                    <span class="span-item me-3 d-none">Eliminados</span>
+                            <a href="./Archivados.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
+                                <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Archivados" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
+                                    <i class="fa-solid fa-box-archive fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
+                                    <span class="span-item me-3 d-none">Archivados</span>
                                 </div>
                             </a>
                         </li>
 
                         <li class="page-item">
-                            <a href="./Archivados.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
-                                <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Archivados" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
-                                    <i class="fa-solid fa-box-archive fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
-                                    <span class="span-item me-3 d-none">Archivados</span>
+                            <a href="./Eliminados.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
+                                <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Eliminados" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
+                                    <i class="fa-solid fa-trash-can fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
+                                    <span class="span-item me-3 d-none">Eliminados</span>
                                 </div>
                             </a>
                         </li>
@@ -177,7 +177,7 @@
                 </nav>
 
                 <div class="w-100 bg-dark rounded-5 py-3 p-sm-3 position-relative overflow-auto" id="Content">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
             </main>
@@ -195,23 +195,23 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <asp:TextBox ID="TextBoxDestino" runat="server" CssClass="form-control bg-dark text-white custom-form-control" placeholder="" TextMode="Email" />
+                            <asp:TextBox ID="TextBoxDestino" runat="server" CssClass="form-control bg-dark text-white custom-form-control textbox-redactar" placeholder="" TextMode="Email" />
                             <asp:Label Text="Destino:" runat="server" AssociatedControlID="TextBoxDestino" CssClass="text-white" />
                         </div>
 
                         <div class="form-floating bg-dark mb-3">
-                            <asp:TextBox ID="TextBoxAsunto" runat="server" CssClass="form-control bg-dark text-white custom-form-control" placeholder="" />
+                            <asp:TextBox ID="TextBoxAsunto" runat="server" CssClass="form-control bg-dark text-white custom-form-control textbox-redactar" placeholder="" />
                             <asp:Label Text="Asunto:" runat="server" AssociatedControlID="TextBoxAsunto" CssClass="text-white" />
                         </div>
 
                         <div class="form-floating mb-3">
-                            <asp:TextBox ID="TextBoxMensaje" runat="server" TextMode="MultiLine" CssClass="form-control bg-dark text-white custom-form-control h-100" placeholder="" />
+                            <asp:TextBox ID="TextBoxMensaje" runat="server" TextMode="MultiLine" CssClass="form-control bg-dark text-white custom-form-control h-100 textbox-redactar" placeholder="" />
                             <asp:Label Text="Mensaje:" runat="server" AssociatedControlID="TextBoxMensaje" CssClass="text-white" />
                         </div>
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <asp:Button Text="Enviar" type="button" CssClass="btn btn-danger" runat="server" ID="ButtonEnviar" OnClick="ButtonEnviar_Click" />
+                        <asp:Button Text="Enviar" type="button" CssClass="btn btn-danger" runat="server" ID="ButtonEnviar" />
                     </div>
                 </div>
             </div>
@@ -222,8 +222,8 @@
                 <div class="modal-content bg-dark">
                     <div class="modal-body">
                         <div class="input-group">
-                            <asp:TextBox ID="TextBoxBusqueda2" type="text" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Buscar correo" aria-label="Buscar correo" aria-describedby="ButtonBuscar" />
-                            <asp:LinkButton ID="LinkButtonBuscar2" type="button" runat="server" CssClass="btn btn-outline-secondary border-white">
+                            <asp:TextBox ID="TextBoxBusqueda2" type="text" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Buscar correo" aria-label="Buscar correo" aria-describedby="ButtonBuscar" OnClick="LinkButtonBuscar_Click" />
+                            <asp:LinkButton ID="LinkButtonBuscar2" type="button" runat="server" CssClass="btn btn-outline-secondary border-white" OnClick="LinkButtonBuscar_Click">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </asp:LinkButton>
                         </div>

@@ -86,43 +86,39 @@ if (toastTrigger.length > 0) {
     })
 }
 
-let destino = "";
-document.getElementById("TextBoxDestino").addEventListener("keyup", e => {
-    destino = e.target.value;
-});
 
-let asunto = "";
-document.getElementById("TextBoxAsunto").addEventListener("keyup", e => {
-    asunto = e.target.value;
-});
+document.getElementById("TextBoxBusqueda").addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        let buttonSearch = document.getElementById("LinkButtonBuscar");
+        buttonSearch.click();
+    }
+})
 
-let mensaje = "";
-document.getElementById("TextBoxMensaje").addEventListener("keyup", e => {
-    mensaje = e.target.value;
-});
+document.getElementById("TextBoxBusqueda2").addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        let buttonSearch = document.getElementById("LinkButtonBuscar2");
+        buttonSearch.click();
+    }
+})
 
-//const ValidarCampos = async () => {
-//    if (destino == null || destino == "" || destino == NaN)
-//        return true;
-//    else if (asunto == null || asunto == "" || asunto == NaN)
-//        return true;
-//    else if (mensaje == null || mensaje == "" || mensaje == NaN)
-//        return true;
-//    else
-//        return false;
-//}
+document.getElementById("TextBoxBusqueda2").addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        let buttonSearch = document.getElementById("LinkButtonBuscar2");
+        buttonSearch.click();
+    }
+})
 
+const textboxModal = document.querySelectorAll(".textbox-redactar");
 
-//document.getElementById("ButtonEnviar").addEventListener("click", e => {
-//    ValidarCampos().then(response => {
-//        if (response) {
-//            Swal.fire({
-//                title: 'Campos incompletos',
-//                icon: 'warning',
-//                confirmButtonText: 'Ok'
-//            })
-
-//            e.preventDefault();
-//        }
-//    });
-//});
+textboxModal.forEach(textBox => {
+    textBox.addEventListener("keypress", e => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            let buttonSearch = document.getElementById("ButtonEnviar");
+            buttonSearch.click();
+        }
+    })
+})

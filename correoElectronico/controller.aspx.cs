@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,8 @@ namespace correoElectronico
     public partial class controller : System.Web.UI.Page
     {
         UsuarioTableAdapter adaptadorUsuario = new UsuarioTableAdapter();
+        CorreoTableAdapter adaptadorCorreo = new CorreoTableAdapter();
+        IndexadorTableAdapter adaptadorIndexador = new IndexadorTableAdapter();
 
         protected void ValidarRedactar()
         {
@@ -25,8 +28,24 @@ namespace correoElectronico
 
                     if (adaptadorUsuario.BuscarUsuario(destino).Rows.Count > 0)
                     {
-                        
-                        //adaptadorIndexador.InsertarIndexador(Convert.ToInt32(Session["Id"]), Convert.ToInt32(adaptadorUsuario.BuscarUsuario(destino).Rows[0]["id"]), false, true, true, 0);
+                        if (mensaje.Length > 500)
+                        {
+                            Response.AddHeader("X-Test-Header", "mensajeLargo");
+                            Response.Write("error");
+                        }
+                        else
+                        {
+                            int idDestino = Convert.ToInt32(adaptadorUsuario.BuscarUsuario(destino).Rows[0]["id"]);
+                            int idRemitente = Convert.ToInt32(Session["Id"]);
+                            DateTime fecha = DateTime.Now;
+
+                            DataTable tablaID = adaptadorCorreo.ObtenerUltimoID();
+                            int newID = Convert.ToInt32(tablaID.Rows[0]["id"]) == 0 ? 0 : Convert.ToInt32(tablaID.Rows[0]["id"]) + 1;
+
+                            adaptadorCorreo.InsertarCorreo(newID, asunto, fecha, mensaje);
+                            adaptadorIndexador.InsertarIndexador(idRemitente, idDestino, false, true, true, newID);
+                            adaptadorIndexador.InsertarIndexador(idDestino, idRemitente, true, false, false, newID);
+                        }
                     }
                     else
                     {

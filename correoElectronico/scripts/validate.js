@@ -23,17 +23,35 @@
                         confirmButtonText: 'Ok',
                     })
                 }
+                else if (request.getResponseHeader("X-Test-Header") == "mensajeLargo") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'El mensaje es demasiado largo',
+                        confirmButtonText: 'Ok',
+                    })
+                }
             }
             else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Correo enviado exitosamente',
-                    confirmButtonText: 'Ok',
-                })
+                hideModalRedactar();
+                showToastEnviado();
+
+                $("#TextBoxDestino").val("");
+                $("#TextBoxAsunto").val("");
+                $("#TextBoxMensaje").val("");
             }
         },
         error: function (data) {
-            console.log(data);
+            console.log("Ocurrió un error insperado");
         }
     })
 })
+
+function hideModalRedactar() {
+    $('#modalRedactar').modal('hide')
+}
+
+function showToastEnviado() {
+    const customToast = document.getElementById('toastMensajeEnviado');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(customToast);
+    toastBootstrap.show();
+}

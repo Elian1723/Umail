@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignIn.aspx.cs" Inherits="correoElectronico.SignIn" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignIn.aspx.cs" Inherits="correoElectronico.SignIn" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 
@@ -14,6 +14,7 @@
     <script src="./scripts/alert.js"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/Media/favicon.ico" type="image/x-icon" />
 </head>
 <body>
     <form id="form1" runat="server" class="vh-100 d-flex align-items-center needs-validation" novalidate="">

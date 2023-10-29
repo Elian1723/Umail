@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ajustes.aspx.cs" Inherits="correoElectronico.Ajustes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ajustes.aspx.cs" Inherits="correoElectronico.Ajustes" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 
@@ -13,10 +13,11 @@
     <script src="https://kit.fontawesome.com/a75a44cb4d.js" crossorigin="anonymous"></script>
     <script src="./scripts/alert.js"></script>
     <link href="./style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/Media/favicon.ico" type="image/x-icon" />
     <title>Ajustes</title>
 </head>
-<body>
-    <form id="form1" runat="server" class="row vh-100 w-100 justify-content-center align-items-center needs-validation" novalidate="">
+<body class="overflow-hidden">
+    <form id="form1" runat="server" class="row vh-100 w-100 justify-content-center align-items-center needs-validation position-relative" novalidate="">
         <main class="col-12 col-sm-10 col-md-9 col-lg-7 col-xl-5 ps-4 p-sm-3">
             <div class="row">
                 <div class="col-12 mb-5 d-flex flex-column align-items-center">
@@ -25,28 +26,28 @@
                 </div>
 
                 <div class="col-12 col-sm-6">
-                    <div class="form-floating mb-2">
+                    <div class="form-floating mb-2 bg-dark index-0">
                         <asp:TextBox ID="TextBoxName" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Nombre" />
                         <asp:Label Text="Nombre:" AssociatedControlID="TextBoxName" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-3">
-                    <div class="form-floating">
+                    <div class="form-floating bg-dark index-0">
                         <asp:TextBox ID="TextBoxLastName" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Apellido" />
                         <asp:Label Text="Apellido:" AssociatedControlID="TextBoxLastName" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-3">
-                    <div class="form-floating">
+                    <div class="form-floating bg-dark index-0">
                         <asp:TextBox ID="TextBoxDate" TextMode="Date" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Fecha de nacimiento" />
                         <asp:Label Text="Fecha de nacimiento:" AssociatedControlID="TextBoxDate" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-3">
-                    <div class="form-floating">
+                    <div class="form-floating bg-dark index-0">
                         <asp:DropDownList runat="server" ID="DropDownListGender" CssClass="form-control bg-dark text-white">
                             <asp:ListItem Text="Seleccionar género" Value="" />
                             <asp:ListItem Text="Masculino" Value="masculino" />
@@ -57,22 +58,22 @@
                 </div>
 
                 <div class="col-12 mb-3">
-                    <div class="form-floating">
+                    <div class="form-floating bg-dark index-0">
                         <asp:TextBox ID="TextBoxOldPassword" TextMode="Password" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Contraseña actual" />
                         <asp:Label Text="Contraseña actual" AssociatedControlID="TextBoxOldPassword" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-3">
-                    <div class="form-floating">
+                    <div class="form-floating bg-dark index-0">
                         <asp:TextBox ID="TextBoxNewPassword" TextMode="Password" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Nueva contraseña" />
                         <asp:Label Text="Nueva contraseña" AssociatedControlID="TextBoxNewPassword" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
-                    <div class="form-floating">
-                        <asp:TextBox ID="TextBoxConfirmedPassword" TextMode="Password" runat="server" CssClass="form-control bg-transparent text-white" placeholder="Confirmar contraseña" />
+                    <div class="form-floating bg-dark index-0">
+                        <asp:TextBox ID="TextBoxConfirmedPassword" TextMode="Password" runat="server" CssClass="form-control bg-transparent text-white index-0" placeholder="Confirmar contraseña" />
                         <asp:Label Text="Confirmar contraseña" AssociatedControlID="TextBoxConfirmedPassword" runat="server" CssClass="text-white bg-transparent" />
                     </div>
                 </div>
@@ -83,6 +84,7 @@
                 </div>
             </div>
         </main>
+        <img src="./Media/icon.png" class="position-absolute w-50 position-right-0 index-1 d-none d-md-block" />
     </form>
     <script src="./scripts/bs-validate.js"></script>
 </body>

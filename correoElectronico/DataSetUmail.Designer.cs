@@ -30,9 +30,15 @@ namespace correoElectronico {
         
         private IndexadorDataTable tableIndexador;
         
+        private IndexadorBusquedaDataTable tableIndexadorBusqueda;
+        
         private global::System.Data.DataRelation relationFK_Indexador_Correo;
         
         private global::System.Data.DataRelation relationFK_Indexador_Usuario21;
+        
+        private global::System.Data.DataRelation relationFK_Indexador_Correo1;
+        
+        private global::System.Data.DataRelation relationFK_Indexador_Usuario2;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -70,6 +76,9 @@ namespace correoElectronico {
                 }
                 if ((ds.Tables["Indexador"] != null)) {
                     base.Tables.Add(new IndexadorDataTable(ds.Tables["Indexador"]));
+                }
+                if ((ds.Tables["IndexadorBusqueda"] != null)) {
+                    base.Tables.Add(new IndexadorBusquedaDataTable(ds.Tables["IndexadorBusqueda"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -116,6 +125,16 @@ namespace correoElectronico {
         public IndexadorDataTable Indexador {
             get {
                 return this.tableIndexador;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public IndexadorBusquedaDataTable IndexadorBusqueda {
+            get {
+                return this.tableIndexadorBusqueda;
             }
         }
         
@@ -195,6 +214,9 @@ namespace correoElectronico {
                 if ((ds.Tables["Indexador"] != null)) {
                     base.Tables.Add(new IndexadorDataTable(ds.Tables["Indexador"]));
                 }
+                if ((ds.Tables["IndexadorBusqueda"] != null)) {
+                    base.Tables.Add(new IndexadorBusquedaDataTable(ds.Tables["IndexadorBusqueda"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -246,8 +268,16 @@ namespace correoElectronico {
                     this.tableIndexador.InitVars();
                 }
             }
+            this.tableIndexadorBusqueda = ((IndexadorBusquedaDataTable)(base.Tables["IndexadorBusqueda"]));
+            if ((initTable == true)) {
+                if ((this.tableIndexadorBusqueda != null)) {
+                    this.tableIndexadorBusqueda.InitVars();
+                }
+            }
             this.relationFK_Indexador_Correo = this.Relations["FK_Indexador_Correo"];
             this.relationFK_Indexador_Usuario21 = this.Relations["FK_Indexador_Usuario21"];
+            this.relationFK_Indexador_Correo1 = this.Relations["FK_Indexador_Correo1"];
+            this.relationFK_Indexador_Usuario2 = this.Relations["FK_Indexador_Usuario2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,6 +294,8 @@ namespace correoElectronico {
             base.Tables.Add(this.tableCorreo);
             this.tableIndexador = new IndexadorDataTable();
             base.Tables.Add(this.tableIndexador);
+            this.tableIndexadorBusqueda = new IndexadorBusquedaDataTable();
+            base.Tables.Add(this.tableIndexadorBusqueda);
             this.relationFK_Indexador_Correo = new global::System.Data.DataRelation("FK_Indexador_Correo", new global::System.Data.DataColumn[] {
                         this.tableCorreo.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexador.id_correoColumn}, false);
@@ -272,6 +304,14 @@ namespace correoElectronico {
                         this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexador.id_ccColumn}, false);
             this.Relations.Add(this.relationFK_Indexador_Usuario21);
+            this.relationFK_Indexador_Correo1 = new global::System.Data.DataRelation("FK_Indexador_Correo1", new global::System.Data.DataColumn[] {
+                        this.tableCorreo.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableIndexadorBusqueda.id_correoColumn}, false);
+            this.Relations.Add(this.relationFK_Indexador_Correo1);
+            this.relationFK_Indexador_Usuario2 = new global::System.Data.DataRelation("FK_Indexador_Usuario2", new global::System.Data.DataColumn[] {
+                        this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableIndexadorBusqueda.id_ccColumn}, false);
+            this.Relations.Add(this.relationFK_Indexador_Usuario2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -289,6 +329,12 @@ namespace correoElectronico {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeIndexador() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeIndexadorBusqueda() {
             return false;
         }
         
@@ -355,6 +401,9 @@ namespace correoElectronico {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void IndexadorRowChangeEventHandler(object sender, IndexadorRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void IndexadorBusquedaRowChangeEventHandler(object sender, IndexadorBusquedaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1397,6 +1446,380 @@ namespace correoElectronico {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class IndexadorBusquedaDataTable : global::System.Data.TypedTableBase<IndexadorBusquedaRow> {
+            
+            private global::System.Data.DataColumn columnid_propietario;
+            
+            private global::System.Data.DataColumn columnid_cc;
+            
+            private global::System.Data.DataColumn columnrecibido;
+            
+            private global::System.Data.DataColumn columnenviado;
+            
+            private global::System.Data.DataColumn columnarchivado;
+            
+            private global::System.Data.DataColumn columndestacado;
+            
+            private global::System.Data.DataColumn columnpapelera;
+            
+            private global::System.Data.DataColumn columnleido;
+            
+            private global::System.Data.DataColumn columnid_correo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaDataTable() {
+                this.TableName = "IndexadorBusqueda";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal IndexadorBusquedaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected IndexadorBusquedaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_propietarioColumn {
+                get {
+                    return this.columnid_propietario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_ccColumn {
+                get {
+                    return this.columnid_cc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn recibidoColumn {
+                get {
+                    return this.columnrecibido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn enviadoColumn {
+                get {
+                    return this.columnenviado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn archivadoColumn {
+                get {
+                    return this.columnarchivado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn destacadoColumn {
+                get {
+                    return this.columndestacado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn papeleraColumn {
+                get {
+                    return this.columnpapelera;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn leidoColumn {
+                get {
+                    return this.columnleido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_correoColumn {
+                get {
+                    return this.columnid_correo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow this[int index] {
+                get {
+                    return ((IndexadorBusquedaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event IndexadorBusquedaRowChangeEventHandler IndexadorBusquedaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event IndexadorBusquedaRowChangeEventHandler IndexadorBusquedaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event IndexadorBusquedaRowChangeEventHandler IndexadorBusquedaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event IndexadorBusquedaRowChangeEventHandler IndexadorBusquedaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddIndexadorBusquedaRow(IndexadorBusquedaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow AddIndexadorBusquedaRow(int id_propietario, UsuarioRow parentUsuarioRowByFK_Indexador_Usuario2, bool recibido, bool enviado, bool archivado, bool destacado, bool papelera, bool leido, CorreoRow parentCorreoRowByFK_Indexador_Correo1) {
+                IndexadorBusquedaRow rowIndexadorBusquedaRow = ((IndexadorBusquedaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        id_propietario,
+                        null,
+                        recibido,
+                        enviado,
+                        archivado,
+                        destacado,
+                        papelera,
+                        leido,
+                        null};
+                if ((parentUsuarioRowByFK_Indexador_Usuario2 != null)) {
+                    columnValuesArray[1] = parentUsuarioRowByFK_Indexador_Usuario2[0];
+                }
+                if ((parentCorreoRowByFK_Indexador_Correo1 != null)) {
+                    columnValuesArray[8] = parentCorreoRowByFK_Indexador_Correo1[0];
+                }
+                rowIndexadorBusquedaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowIndexadorBusquedaRow);
+                return rowIndexadorBusquedaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                IndexadorBusquedaDataTable cln = ((IndexadorBusquedaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new IndexadorBusquedaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnid_propietario = base.Columns["id_propietario"];
+                this.columnid_cc = base.Columns["id_cc"];
+                this.columnrecibido = base.Columns["recibido"];
+                this.columnenviado = base.Columns["enviado"];
+                this.columnarchivado = base.Columns["archivado"];
+                this.columndestacado = base.Columns["destacado"];
+                this.columnpapelera = base.Columns["papelera"];
+                this.columnleido = base.Columns["leido"];
+                this.columnid_correo = base.Columns["id_correo"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnid_propietario = new global::System.Data.DataColumn("id_propietario", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_propietario);
+                this.columnid_cc = new global::System.Data.DataColumn("id_cc", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_cc);
+                this.columnrecibido = new global::System.Data.DataColumn("recibido", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrecibido);
+                this.columnenviado = new global::System.Data.DataColumn("enviado", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnenviado);
+                this.columnarchivado = new global::System.Data.DataColumn("archivado", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnarchivado);
+                this.columndestacado = new global::System.Data.DataColumn("destacado", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndestacado);
+                this.columnpapelera = new global::System.Data.DataColumn("papelera", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpapelera);
+                this.columnleido = new global::System.Data.DataColumn("leido", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnleido);
+                this.columnid_correo = new global::System.Data.DataColumn("id_correo", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_correo);
+                this.columnid_propietario.AllowDBNull = false;
+                this.columnid_cc.AllowDBNull = false;
+                this.columnrecibido.AllowDBNull = false;
+                this.columnenviado.AllowDBNull = false;
+                this.columnarchivado.AllowDBNull = false;
+                this.columndestacado.AllowDBNull = false;
+                this.columnpapelera.AllowDBNull = false;
+                this.columnleido.AllowDBNull = false;
+                this.columnid_correo.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow NewIndexadorBusquedaRow() {
+                return ((IndexadorBusquedaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new IndexadorBusquedaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(IndexadorBusquedaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.IndexadorBusquedaRowChanged != null)) {
+                    this.IndexadorBusquedaRowChanged(this, new IndexadorBusquedaRowChangeEvent(((IndexadorBusquedaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.IndexadorBusquedaRowChanging != null)) {
+                    this.IndexadorBusquedaRowChanging(this, new IndexadorBusquedaRowChangeEvent(((IndexadorBusquedaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.IndexadorBusquedaRowDeleted != null)) {
+                    this.IndexadorBusquedaRowDeleted(this, new IndexadorBusquedaRowChangeEvent(((IndexadorBusquedaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.IndexadorBusquedaRowDeleting != null)) {
+                    this.IndexadorBusquedaRowDeleting(this, new IndexadorBusquedaRowChangeEvent(((IndexadorBusquedaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveIndexadorBusquedaRow(IndexadorBusquedaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetUmail ds = new DataSetUmail();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "IndexadorBusquedaDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class UsuarioRow : global::System.Data.DataRow {
@@ -1497,6 +1920,17 @@ namespace correoElectronico {
                     return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Usuario21"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow[] GetIndexadorBusquedaRows() {
+                if ((this.Table.ChildRelations["FK_Indexador_Usuario2"] == null)) {
+                    return new IndexadorBusquedaRow[0];
+                }
+                else {
+                    return ((IndexadorBusquedaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Usuario2"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1565,6 +1999,17 @@ namespace correoElectronico {
                 }
                 else {
                     return ((IndexadorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Correo"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow[] GetIndexadorBusquedaRows() {
+                if ((this.Table.ChildRelations["FK_Indexador_Correo1"] == null)) {
+                    return new IndexadorBusquedaRow[0];
+                }
+                else {
+                    return ((IndexadorBusquedaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Correo1"])));
                 }
             }
         }
@@ -1706,6 +2151,142 @@ namespace correoElectronico {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class IndexadorBusquedaRow : global::System.Data.DataRow {
+            
+            private IndexadorBusquedaDataTable tableIndexadorBusqueda;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal IndexadorBusquedaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableIndexadorBusqueda = ((IndexadorBusquedaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_propietario {
+                get {
+                    return ((int)(this[this.tableIndexadorBusqueda.id_propietarioColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.id_propietarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_cc {
+                get {
+                    return ((int)(this[this.tableIndexadorBusqueda.id_ccColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.id_ccColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool recibido {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.recibidoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.recibidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool enviado {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.enviadoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.enviadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool archivado {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.archivadoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.archivadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool destacado {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.destacadoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.destacadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool papelera {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.papeleraColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.papeleraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool leido {
+                get {
+                    return ((bool)(this[this.tableIndexadorBusqueda.leidoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.leidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_correo {
+                get {
+                    return ((int)(this[this.tableIndexadorBusqueda.id_correoColumn]));
+                }
+                set {
+                    this[this.tableIndexadorBusqueda.id_correoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public CorreoRow CorreoRow {
+                get {
+                    return ((CorreoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Correo1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Correo1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UsuarioRow UsuarioRow {
+                get {
+                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Indexador_Usuario2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Indexador_Usuario2"]);
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1793,6 +2374,40 @@ namespace correoElectronico {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndexadorRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class IndexadorBusquedaRowChangeEvent : global::System.EventArgs {
+            
+            private IndexadorBusquedaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRowChangeEvent(IndexadorBusquedaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndexadorBusquedaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2874,6 +3489,464 @@ WHERE        (id_propietario = @idUsuario) AND (recibido = 1) AND (enviado = 0) 
                 }
             }
             return returnValue;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class IndexadorBusquedaTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public IndexadorBusquedaTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "IndexadorBusqueda";
+            tableMapping.ColumnMappings.Add("id_propietario", "id_propietario");
+            tableMapping.ColumnMappings.Add("id_cc", "id_cc");
+            tableMapping.ColumnMappings.Add("recibido", "recibido");
+            tableMapping.ColumnMappings.Add("enviado", "enviado");
+            tableMapping.ColumnMappings.Add("archivado", "archivado");
+            tableMapping.ColumnMappings.Add("destacado", "destacado");
+            tableMapping.ColumnMappings.Add("papelera", "papelera");
+            tableMapping.ColumnMappings.Add("leido", "leido");
+            tableMapping.ColumnMappings.Add("id_correo", "id_correo");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["UmailConnectionString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        Indexador.*\r\nFROM            Indexador";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.archivado = 1 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@apellido", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@asunto", global::System.Data.SqlDbType.NChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "asunto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.papelera = 1 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@apellido", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@asunto", global::System.Data.SqlDbType.NChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "asunto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 0 AND Indexador.enviado = 1 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@apellido", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@asunto", global::System.Data.SqlDbType.NChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "asunto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 1 AND Indexador.enviado = 0 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@apellido", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@asunto", global::System.Data.SqlDbType.NChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "asunto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = @"SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable ObtenerIndexacion() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarArchivados(int idUsuario, string nombre, string apellido, string asunto) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nombre));
+            }
+            if ((apellido == null)) {
+                throw new global::System.ArgumentNullException("apellido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(apellido));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarArchivadosFecha(int idUsuario, string fecha) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarEliminados(int idUsuario, string nombre, string apellido, string asunto) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nombre));
+            }
+            if ((apellido == null)) {
+                throw new global::System.ArgumentNullException("apellido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(apellido));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarEliminadosFecha(int idUsuario, string fecha) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarEnviados(int idUsuario, string nombre, string apellido, string asunto) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nombre));
+            }
+            if ((apellido == null)) {
+                throw new global::System.ArgumentNullException("apellido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(apellido));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarEnviadosFecha(int idUsuario, string fecha) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarRecibidos(int idUsuario, string nombre, string apellido, string asunto) {
+            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((nombre == null)) {
+                throw new global::System.ArgumentNullException("nombre");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nombre));
+            }
+            if ((apellido == null)) {
+                throw new global::System.ArgumentNullException("apellido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(apellido));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetUmail.IndexadorBusquedaDataTable BuscarRecibidosFecha(int idUsuario, string fecha) {
+            this.Adapter.SelectCommand = this.CommandCollection[8];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha));
+            }
+            DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     

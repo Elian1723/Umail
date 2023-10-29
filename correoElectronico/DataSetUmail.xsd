@@ -213,7 +213,7 @@ WHERE        (id_correo = @idCorreo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarCorreo" Modifier="Public" Name="EliminarCorreo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="EliminarCorreo">
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarCorreo" Modifier="Public" Name="EliminarCorreo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EliminarCorreo">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Correo
@@ -224,7 +224,7 @@ WHERE        (id = @idCorreo)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarIndexador" Modifier="Public" Name="EliminarIndexador" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="EliminarIndexador">
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarIndexador" Modifier="Public" Name="EliminarIndexador" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="EliminarIndexador">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Indexador
@@ -236,7 +236,7 @@ WHERE        (id_propietario = @idUsuario) AND (id_correo = @idCorreo)</CommandT
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarIndexador" Modifier="Public" Name="InsertarIndexador" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertarIndexador">
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarIndexador" Modifier="Public" Name="InsertarIndexador" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="InsertarIndexador">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Indexador
@@ -325,7 +325,7 @@ WHERE        (id_propietario = @idUsuario) AND (recibido = 1) AND (enviado = 0) 
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToggleLeido" Modifier="Public" Name="ToggleLeido" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ToggleLeido">
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToggleLeido" Modifier="Public" Name="ToggleLeido" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="ToggleLeido">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Indexador
@@ -338,6 +338,176 @@ WHERE        (id_propietario = @idUsuario) AND (id_correo = @idCorreo)</CommandT
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="IndexadorBusquedaTableAdapter" GeneratorDataComponentClassName="IndexadorBusquedaTableAdapter" Name="IndexadorBusqueda" UserDataComponentName="IndexadorBusquedaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectName="Umail.dbo.Indexador" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="ObtenerIndexacion" GetMethodModifier="Public" GetMethodName="ObtenerIndexacion" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="ObtenerIndexacion" UserSourceName="ObtenerIndexacion">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.*
+FROM            Indexador</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_propietario" DataSetColumn="id_propietario" />
+              <Mapping SourceColumn="id_cc" DataSetColumn="id_cc" />
+              <Mapping SourceColumn="recibido" DataSetColumn="recibido" />
+              <Mapping SourceColumn="enviado" DataSetColumn="enviado" />
+              <Mapping SourceColumn="archivado" DataSetColumn="archivado" />
+              <Mapping SourceColumn="destacado" DataSetColumn="destacado" />
+              <Mapping SourceColumn="papelera" DataSetColumn="papelera" />
+              <Mapping SourceColumn="leido" DataSetColumn="leido" />
+              <Mapping SourceColumn="id_correo" DataSetColumn="id_correo" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarArchivados" GetMethodModifier="Public" GetMethodName="BuscarArchivados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarArchivados" UserSourceName="BuscarArchivados">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.archivado = 1 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombre" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellido" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="apellido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="asunto" ColumnName="asunto" DataSourceName="Umail.dbo.Correo" DataTypeServer="nchar(35)" DbType="String" Direction="Input" ParameterName="@asunto" Precision="0" ProviderType="NChar" Scale="0" Size="35" SourceColumn="asunto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarArchivadosFecha" GetMethodModifier="Public" GetMethodName="BuscarArchivadosFecha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarArchivadosFecha" UserSourceName="BuscarArchivadosFecha">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fecha" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@fecha" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarEliminados" GetMethodModifier="Public" GetMethodName="BuscarEliminados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarEliminados" UserSourceName="BuscarEliminados">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.papelera = 1 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombre" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellido" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="apellido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="asunto" ColumnName="asunto" DataSourceName="Umail.dbo.Correo" DataTypeServer="nchar(35)" DbType="String" Direction="Input" ParameterName="@asunto" Precision="0" ProviderType="NChar" Scale="0" Size="35" SourceColumn="asunto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarEliminadosFecha" GetMethodModifier="Public" GetMethodName="BuscarEliminadosFecha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarEliminadosFecha" UserSourceName="BuscarEliminadosFecha">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fecha" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@fecha" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarEnviados" GetMethodModifier="Public" GetMethodName="BuscarEnviados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarEnviados" UserSourceName="BuscarEnviados">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 0 AND Indexador.enviado = 1 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombre" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellido" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="apellido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="asunto" ColumnName="asunto" DataSourceName="Umail.dbo.Correo" DataTypeServer="nchar(35)" DbType="String" Direction="Input" ParameterName="@asunto" Precision="0" ProviderType="NChar" Scale="0" Size="35" SourceColumn="asunto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarEnviadosFecha" GetMethodModifier="Public" GetMethodName="BuscarEnviadosFecha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarEnviadosFecha" UserSourceName="BuscarEnviadosFecha">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fecha" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@fecha" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarRecibidos" GetMethodModifier="Public" GetMethodName="BuscarRecibidos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarRecibidos" UserSourceName="BuscarRecibidos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 1 AND Indexador.enviado = 0 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
+                         Usuario.apellido = @apellido OR
+                         Correo.asunto = @asunto)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombre" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellido" DataSourceName="Umail.dbo.Usuario" DataTypeServer="nchar(30)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NChar" Scale="0" Size="30" SourceColumn="apellido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="asunto" ColumnName="asunto" DataSourceName="Umail.dbo.Correo" DataTypeServer="nchar(35)" DbType="String" Direction="Input" ParameterName="@asunto" Precision="0" ProviderType="NChar" Scale="0" Size="35" SourceColumn="asunto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="UmailConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="BuscarRecibidosFecha" GetMethodModifier="Public" GetMethodName="BuscarRecibidosFecha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="BuscarRecibidosFecha" UserSourceName="BuscarRecibidosFecha">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Indexador.id_propietario, Indexador.id_cc, Usuario.nombre, Usuario.apellido, Indexador.recibido, Indexador.enviado, Indexador.archivado, Indexador.destacado, Indexador.papelera, Indexador.leido, Indexador.id_correo, 
+                         Correo.asunto, Correo.fecha, Correo.mensaje
+FROM            Correo INNER JOIN
+                         Indexador ON Correo.id = Indexador.id_correo INNER JOIN
+                         Usuario ON Indexador.id_cc = Usuario.id
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idUsuario" ColumnName="id_propietario" DataSourceName="Umail.dbo.Indexador" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idUsuario" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_propietario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fecha" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@fecha" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -429,6 +599,21 @@ WHERE        (id_propietario = @idUsuario) AND (id_correo = @idCorreo)</CommandT
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="IndexadorBusqueda" msprop:Generator_RowEvHandlerName="IndexadorBusquedaRowChangeEventHandler" msprop:Generator_RowDeletedName="IndexadorBusquedaRowDeleted" msprop:Generator_RowDeletingName="IndexadorBusquedaRowDeleting" msprop:Generator_RowEvArgName="IndexadorBusquedaRowChangeEvent" msprop:Generator_TablePropName="IndexadorBusqueda" msprop:Generator_RowChangedName="IndexadorBusquedaRowChanged" msprop:Generator_UserTableName="IndexadorBusqueda" msprop:Generator_RowChangingName="IndexadorBusquedaRowChanging" msprop:Generator_RowClassName="IndexadorBusquedaRow" msprop:Generator_TableClassName="IndexadorBusquedaDataTable" msprop:Generator_TableVarName="tableIndexadorBusqueda">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_propietario" msprop:Generator_ColumnPropNameInTable="id_propietarioColumn" msprop:Generator_ColumnPropNameInRow="id_propietario" msprop:Generator_UserColumnName="id_propietario" msprop:Generator_ColumnVarNameInTable="columnid_propietario" type="xs:int" />
+              <xs:element name="id_cc" msprop:Generator_ColumnPropNameInTable="id_ccColumn" msprop:Generator_ColumnPropNameInRow="id_cc" msprop:Generator_UserColumnName="id_cc" msprop:Generator_ColumnVarNameInTable="columnid_cc" type="xs:int" />
+              <xs:element name="recibido" msprop:Generator_ColumnPropNameInTable="recibidoColumn" msprop:Generator_ColumnPropNameInRow="recibido" msprop:Generator_UserColumnName="recibido" msprop:Generator_ColumnVarNameInTable="columnrecibido" type="xs:boolean" />
+              <xs:element name="enviado" msprop:Generator_ColumnPropNameInTable="enviadoColumn" msprop:Generator_ColumnPropNameInRow="enviado" msprop:Generator_UserColumnName="enviado" msprop:Generator_ColumnVarNameInTable="columnenviado" type="xs:boolean" />
+              <xs:element name="archivado" msprop:Generator_ColumnPropNameInTable="archivadoColumn" msprop:Generator_ColumnPropNameInRow="archivado" msprop:Generator_UserColumnName="archivado" msprop:Generator_ColumnVarNameInTable="columnarchivado" type="xs:boolean" />
+              <xs:element name="destacado" msprop:Generator_ColumnPropNameInTable="destacadoColumn" msprop:Generator_ColumnPropNameInRow="destacado" msprop:Generator_UserColumnName="destacado" msprop:Generator_ColumnVarNameInTable="columndestacado" type="xs:boolean" />
+              <xs:element name="papelera" msprop:Generator_ColumnPropNameInTable="papeleraColumn" msprop:Generator_ColumnPropNameInRow="papelera" msprop:Generator_UserColumnName="papelera" msprop:Generator_ColumnVarNameInTable="columnpapelera" type="xs:boolean" />
+              <xs:element name="leido" msprop:Generator_ColumnPropNameInTable="leidoColumn" msprop:Generator_ColumnPropNameInRow="leido" msprop:Generator_UserColumnName="leido" msprop:Generator_ColumnVarNameInTable="columnleido" type="xs:boolean" />
+              <xs:element name="id_correo" msprop:Generator_ColumnPropNameInTable="id_correoColumn" msprop:Generator_ColumnPropNameInRow="id_correo" msprop:Generator_UserColumnName="id_correo" msprop:Generator_ColumnVarNameInTable="columnid_correo" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -442,8 +627,10 @@ WHERE        (id_propietario = @idUsuario) AND (id_correo = @idCorreo)</CommandT
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Indexador_Correo" msdata:parent="Correo" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Correo" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_ParentPropName="CorreoRow" msprop:Generator_UserRelationName="FK_Indexador_Correo" />
-      <msdata:Relationship name="FK_Indexador_Usuario21" msdata:parent="Usuario" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario21" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_ParentPropName="UsuarioRow" msprop:Generator_UserRelationName="FK_Indexador_Usuario21" />
+      <msdata:Relationship name="FK_Indexador_Correo" msdata:parent="Correo" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Correo" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_UserRelationName="FK_Indexador_Correo" msprop:Generator_ParentPropName="CorreoRow" />
+      <msdata:Relationship name="FK_Indexador_Usuario21" msdata:parent="Usuario" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario21" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_UserRelationName="FK_Indexador_Usuario21" msprop:Generator_ParentPropName="UsuarioRow" />
+      <msdata:Relationship name="FK_Indexador_Correo1" msdata:parent="Correo" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Correo1" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_ParentPropName="CorreoRow" msprop:Generator_UserRelationName="FK_Indexador_Correo1" />
+      <msdata:Relationship name="FK_Indexador_Usuario2" msdata:parent="Usuario" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario2" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_ParentPropName="UsuarioRow" msprop:Generator_UserRelationName="FK_Indexador_Usuario2" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

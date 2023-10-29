@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="correoElectronico.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="correoElectronico.Login" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 
@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <script src="./scripts/alert.js"></script>
     <link href="./style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/Media/favicon.ico" type="image/x-icon" />
     <title>Iniciar Sesión</title>
 </head>
 <body class="overflow-hidden">

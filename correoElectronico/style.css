@@ -13,6 +13,10 @@ body, .card {
     z-index: 99 !important;
 }
 
+.index-1 {
+    z-index: 1 !important;
+}
+
 .w-10 {
     width: 10% !important; 
 }
@@ -129,6 +133,11 @@ body, .card {
 
 .custom-rounded-end {
     border-radius: 0 1rem 1rem 0;
+}
+
+.position-right-0 {
+    transform: translate(70%, 30%) !important;
+    opacity: 0.1;
 }
 
 #Content {

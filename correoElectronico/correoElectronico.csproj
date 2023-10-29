@@ -218,6 +218,7 @@
     <Content Include="controller.aspx" />
     <Content Include="DashboardPages\Archivados.aspx" />
     <Content Include="DashboardPages\Borradores.aspx" />
+    <Content Include="DashboardPages\Destacados.aspx" />
     <Content Include="DashboardPages\Eliminados.aspx" />
     <Content Include="DashboardPages\Enviados.aspx" />
     <Content Include="DashboardPages\Recibidos.aspx" />
@@ -231,6 +232,7 @@
     <Content Include="Bootstrap\Scripts\bootstrap.min.js" />
     <Content Include="Media\faq.png" />
     <Content Include="Media\favicon.ico" />
+    <Content Include="Media\icon.png" />
     <Content Include="Media\image-login.png" />
     <Content Include="Media\logo.png" />
     <Content Include="Media\logo2.png" />
@@ -279,6 +281,13 @@
     </Compile>
     <Compile Include="DashboardPages\Borradores.aspx.designer.cs">
       <DependentUpon>Borradores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPages\Destacados.aspx.cs">
+      <DependentUpon>Destacados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardPages\Destacados.aspx.designer.cs">
+      <DependentUpon>Destacados.aspx</DependentUpon>
     </Compile>
     <Compile Include="DashboardPages\Eliminados.aspx.cs">
       <DependentUpon>Eliminados.aspx</DependentUpon>
