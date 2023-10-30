@@ -16,6 +16,14 @@ namespace correoElectronico.DashboardPages
         IndexadorTableAdapter adaptadorIndexador = new IndexadorTableAdapter();
         UsuarioTableAdapter adaptadorUsuario = new UsuarioTableAdapter();
 
+        protected void CargarCorreos(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                CargarCorreos();
+            }
+        }
+
         protected void CargarCorreos()
         {
             DataTable tablaCorreos = adaptadorIndexador.ObtenerPapelera(Convert.ToInt32(Session["Id"]));
@@ -149,12 +157,16 @@ namespace correoElectronico.DashboardPages
 
         protected void GridViewCorreos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[4].Text += " " + e.Row.Cells[5].Text;
+            try
+            {
+                e.Row.Cells[4].Text += " " + e.Row.Cells[5].Text;
 
-            e.Row.Cells[5].Visible = false;
-            e.Row.Cells[0].Visible = false;
-            e.Row.Cells[1].Visible = false;
-            e.Row.Cells[2].Visible = false;
+                e.Row.Cells[5].Visible = false;
+                e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[2].Visible = false;
+            }
+            catch { }
         }
 
         protected void ButtonEliminar_Click(object sender, EventArgs e)
@@ -170,6 +182,12 @@ namespace correoElectronico.DashboardPages
                 Response.Write("<script>alert('Ocurrió un error inesperado')</script>");
                 Response.Write($"<script>alert('{ex.Message}')</script>");
             }
+        }
+
+        protected void GridViewCorreos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewCorreos.PageIndex = e.NewPageIndex;
+            CargarCorreos();
         }
     }
 }

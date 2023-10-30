@@ -17,7 +17,7 @@
 </head>
 <body class="overflow-hidden">
     <form id="form1" runat="server" class="vh-100 row align-items-center justify-content-center needs-validation" novalidate="">
-        <div class="col-12 col-md-10 col-md-9 col-xl-7 d-flex p-0">
+        <div class="col-12 col-md-10 col-md-9 col-xl-7 d-flex p-0 mb-3" style="margin-bottom: 7% !important;">
             <div class="col py-5 bg-gray-800 d-none d-md-flex justify-content-center align-items-center custom-rounded-start">
                 <img src="./Media/image-login.png" alt="image login" class="w-75 p-0 py-5" />
             </div>

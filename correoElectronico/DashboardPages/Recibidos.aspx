@@ -6,8 +6,14 @@
     <script src="../scripts/toast.js"></script>
     <script src="../scripts/alert.js"></script>
     <script src="../scripts/modal.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
     <main>
-        <h1 class="ms-3 ms-sm-0 mb-3 text-white">Recibidos</h1>
+        <div class="w-100 d-flex justify-content-between align-items-center">
+            <h1 class="d-block ms-3 ms-sm-0 mb-3 text-white">Recibidos</h1>
+            <asp:LinkButton runat="server" CssClass="me-3" OnClick="CargarCorreos">
+                <i class="fa-solid fa-rotate-right fs-5 rounded-5 p-2 me-1 hover-icon text-white" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Actualizar" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
+            </asp:LinkButton>
+        </div>
         <div class="w-100 row mt-5 d-flex justify-content-center" runat="server" id="ImgEmpty">
             <div class="mt-5 d-flex justify-content-center col-8 col-sm-7 col-md-6 col-lg-4 col-xl-3">
                 <img src="/Media/faq.png" alt="Empty" class="w-100" />
@@ -15,14 +21,14 @@
             <h1 class="text-center fs-2 mt-3">Vaya... Al parecer no hay nada por aquí</h1>
         </div>
         <div runat="server" id="GridViewContainer" class="table-responsive">
-            <asp:GridView ID="GridViewCorreos" runat="server" CssClass="table table-dark table-hover" AutoGenerateColumns="false" OnRowCommand="GridViewCorreos_RowCommand" OnRowDataBound="GridViewCorreos_RowDataBound">
+            <asp:GridView ID="GridViewCorreos" runat="server" CssClass="table table-dark table-hover" AutoGenerateColumns="false" OnRowCommand="GridViewCorreos_RowCommand" OnRowDataBound="GridViewCorreos_RowDataBound" AllowPaging="true" PageSize="11" OnPageIndexChanging="GridViewCorreos_PageIndexChanging" PagerStyle-CssClass="pagination">
                 <Columns>
                     <asp:BoundField DataField="id_cc" HeaderText="ID de correo" />
                     <asp:BoundField DataField="id_correo" HeaderText="ID de correo" />
                     <asp:BoundField DataField="leido" HeaderText="Leido" />
                     <asp:TemplateField HeaderStyle-CssClass="w-5">
                         <ItemTemplate>
-                            <asp:LinkButton ID="LinkButtonVerCorreo" runat="server" CommandName="Ver" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
+                            <asp:LinkButton ID="LinkButtonVerCorreo" CssClass="bg-transparent" runat="server" CommandName="Ver" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
                                 <i class="fa-solid fa-eye rounded-5 p-2 me-1" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Ver correo" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                             </asp:LinkButton>
                         </ItemTemplate>
@@ -31,22 +37,22 @@
                     <asp:BoundField DataField="apellido" HeaderText="Apellido" />
                     <asp:BoundField DataField="asunto" HeaderText="Asunto" HeaderStyle-CssClass="w-10" ItemStyle-CssClass="fw-bold" />
                     <asp:BoundField DataField="mensaje" HeaderText="Mensaje" HeaderStyle-CssClass="w-75" />
-                    <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:dd-MM-yyyy}" />
+                    <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:dd-MM-yyyy}" HeaderStyle-CssClass="" />
                     <asp:TemplateField ItemStyle-CssClass="" HeaderStyle-CssClass="w-25">
                         <ItemTemplate>
                             <div class="d-flex">
                                 <div>
-                                    <asp:LinkButton runat="server" CommandName="Leido" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
+                                    <asp:LinkButton runat="server" CssClass="bg-transparent" CommandName="Leido" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
                                         <i class="fa-solid fa-envelope rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Alternar leído" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                                     </asp:LinkButton>
                                 </div>
                                 <div class="d-flex">
-                                    <asp:LinkButton runat="server" CommandName="Eliminado" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
+                                    <asp:LinkButton runat="server" CssClass="bg-transparent" CommandName="Eliminado" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
                                         <i class="fa-solid fa-trash-can rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Eliminar" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                                     </asp:LinkButton>
                                 </div>
                                 <div class="d-flex">
-                                    <asp:LinkButton runat="server" CommandName="Archivar" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
+                                    <asp:LinkButton runat="server" CssClass="bg-transparent" CommandName="Archivar" CommandArgument="<%# Container.DataItemIndex.ToString()%>">
                                         <i class="fa-solid fa-box-archive rounded-5 p-2 me-1 hover-icon" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Archivar" data-bs-placement="top" data-bs-delay='{"show": 400, "hide": 0}'></i>
                                     </asp:LinkButton>
                                 </div>
@@ -94,4 +100,5 @@
             </div>
         </div>
     </div>
+    <script src="../scripts/pagination.js"></script>
 </asp:Content>

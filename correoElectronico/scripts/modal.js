@@ -30,3 +30,14 @@ function showModalEditar(destino, asunto, mensaje) {
     const textBoxMensaje = document.getElementById("TextBoxMensaje");
     textBoxMensaje.value = mensaje;
 }
+
+$('#modalRedactar').on('hidden.bs.modal', function (event) {
+    const textBoxDestino = document.getElementById("TextBoxDestino");
+    textBoxDestino.value = "";
+
+    const textBoxAsunto = document.getElementById("TextBoxAsunto");
+    textBoxAsunto.value = "";
+
+    const textBoxMensaje = document.getElementById("TextBoxMensaje");
+    textBoxMensaje.value = "";
+})

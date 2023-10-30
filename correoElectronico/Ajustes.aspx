@@ -17,8 +17,8 @@
     <title>Ajustes</title>
 </head>
 <body class="overflow-hidden">
-    <form id="form1" runat="server" class="row vh-100 w-100 justify-content-center align-items-center needs-validation position-relative" novalidate="">
-        <main class="col-12 col-sm-10 col-md-9 col-lg-7 col-xl-5 ps-4 p-sm-3">
+    <form id="form1" runat="server" class="row vh-100 w-100 justify-content-center align-items-center needs-validation position-relative overflow-hidden" novalidate="">
+        <main class="col-12 col-sm-10 col-md-9 col-lg-7 col-xl-5 ps-4 p-sm-3" style="margin-bottom: 7% !important;">
             <div class="row">
                 <div class="col-12 mb-5 d-flex flex-column align-items-center">
                     <i class="fa-solid fa-user mb-3 fs-1"></i>

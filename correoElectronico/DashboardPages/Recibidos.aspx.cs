@@ -14,6 +14,11 @@ namespace correoElectronico.DashboardPages
         UsuarioTableAdapter adaptadorUsuario = new UsuarioTableAdapter();
         IndexadorTableAdapter adaptadorIndexador = new IndexadorTableAdapter();
 
+        protected void CargarCorreos(object sender, EventArgs e)
+        {
+            CargarCorreos();
+        }
+
         protected void CargarCorreos()
         {
             DataTable tablaCorreos = adaptadorIndexador.ObtenerRecibidos(Convert.ToInt32(Session["Id"]));
@@ -154,17 +159,22 @@ namespace correoElectronico.DashboardPages
 
         protected void GridViewCorreos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[4].Text += " " + e.Row.Cells[5].Text;
-
-            e.Row.Cells[5].Visible = false;
-            e.Row.Cells[0].Visible = false;
-            e.Row.Cells[1].Visible = false;
-            e.Row.Cells[2].Visible = false;
-
-            if (e.Row.Cells[2].Text == "False")
+            try
             {
-                e.Row.CssClass = "table-active";
+                e.Row.Cells[4].Text += " " + e.Row.Cells[5].Text;
+
+                e.Row.Cells[5].Visible = false;
+                e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[2].Visible = false;
+
+                if (e.Row.Cells[2].Text == "False")
+                {
+                    e.Row.CssClass = "table-active";
+                }
+
             }
+            catch { }
         }
 
         protected void ButtonResponder_Click(object sender, EventArgs e)
@@ -176,6 +186,11 @@ namespace correoElectronico.DashboardPages
             string asunto = LabelAsunto.Text.Trim();
 
             ScriptManager.RegisterStartupScript(this, GetType(), "showModalRedactar", $"showModalRedactar('{email}', '{asunto}');", true);
+        }
+        protected void GridViewCorreos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewCorreos.PageIndex = e.NewPageIndex;
+            CargarCorreos();
         }
     }
 }
