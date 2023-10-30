@@ -23,21 +23,24 @@ namespace correoElectronico
 
         protected void ButtonIniciarSesion_Click(object sender, EventArgs e)
         {
-            string userEmail = TextBoxEmail.Text;
-            string password = TextBoxPassword.Text;
 
-            if (!string.IsNullOrEmpty(userEmail) && !string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(TextBoxEmail.Text) && !string.IsNullOrEmpty(TextBoxPassword.Text))
             {
+                string userEmail = TextBoxEmail.Text;
+                string password = TextBoxPassword.Text;
+
                 try
                 {
-                    DataTable datosUsuario = adaptadorUsuario.BuscarUsuario(userEmail);
+                    DataTable datosUsuario = adaptadorUsuario.BuscarUsuario(TextBoxEmail.Text);
                     if (datosUsuario.Rows.Count > 0)
                     {
                         string a = Convert.ToString(datosUsuario.Rows[0]["contrasena"]).Trim();
                         int b = a.Length + password.Length;
                         if (a == password)
                         {
-                            Session["Correo"] = userEmail;
+                            Session["Correo"] = datosUsuario.Rows[0]["correo"].ToString();
+                            Session["Nombre"] = datosUsuario.Rows[0]["nombre"].ToString() + datosUsuario.Rows[0]["apellido"].ToString();
+                            Session["Id"] = Convert.ToInt32(datosUsuario.Rows[0]["id"]);
                             Session.Timeout = 10080;
                             Response.Redirect("./DashboardPages/Recibidos.aspx");
                         }
