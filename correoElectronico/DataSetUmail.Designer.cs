@@ -32,6 +32,8 @@ namespace correoElectronico {
         
         private IndexadorBusquedaDataTable tableIndexadorBusqueda;
         
+        private BorradorDataTable tableBorrador;
+        
         private global::System.Data.DataRelation relationFK_Indexador_Correo;
         
         private global::System.Data.DataRelation relationFK_Indexador_Usuario21;
@@ -39,6 +41,8 @@ namespace correoElectronico {
         private global::System.Data.DataRelation relationFK_Indexador_Correo1;
         
         private global::System.Data.DataRelation relationFK_Indexador_Usuario2;
+        
+        private global::System.Data.DataRelation relationFK_Borrador_Usuario;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -79,6 +83,9 @@ namespace correoElectronico {
                 }
                 if ((ds.Tables["IndexadorBusqueda"] != null)) {
                     base.Tables.Add(new IndexadorBusquedaDataTable(ds.Tables["IndexadorBusqueda"]));
+                }
+                if ((ds.Tables["Borrador"] != null)) {
+                    base.Tables.Add(new BorradorDataTable(ds.Tables["Borrador"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -135,6 +142,16 @@ namespace correoElectronico {
         public IndexadorBusquedaDataTable IndexadorBusqueda {
             get {
                 return this.tableIndexadorBusqueda;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public BorradorDataTable Borrador {
+            get {
+                return this.tableBorrador;
             }
         }
         
@@ -217,6 +234,9 @@ namespace correoElectronico {
                 if ((ds.Tables["IndexadorBusqueda"] != null)) {
                     base.Tables.Add(new IndexadorBusquedaDataTable(ds.Tables["IndexadorBusqueda"]));
                 }
+                if ((ds.Tables["Borrador"] != null)) {
+                    base.Tables.Add(new BorradorDataTable(ds.Tables["Borrador"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -274,10 +294,17 @@ namespace correoElectronico {
                     this.tableIndexadorBusqueda.InitVars();
                 }
             }
+            this.tableBorrador = ((BorradorDataTable)(base.Tables["Borrador"]));
+            if ((initTable == true)) {
+                if ((this.tableBorrador != null)) {
+                    this.tableBorrador.InitVars();
+                }
+            }
             this.relationFK_Indexador_Correo = this.Relations["FK_Indexador_Correo"];
             this.relationFK_Indexador_Usuario21 = this.Relations["FK_Indexador_Usuario21"];
             this.relationFK_Indexador_Correo1 = this.Relations["FK_Indexador_Correo1"];
             this.relationFK_Indexador_Usuario2 = this.Relations["FK_Indexador_Usuario2"];
+            this.relationFK_Borrador_Usuario = this.Relations["FK_Borrador_Usuario"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -296,6 +323,8 @@ namespace correoElectronico {
             base.Tables.Add(this.tableIndexador);
             this.tableIndexadorBusqueda = new IndexadorBusquedaDataTable();
             base.Tables.Add(this.tableIndexadorBusqueda);
+            this.tableBorrador = new BorradorDataTable();
+            base.Tables.Add(this.tableBorrador);
             this.relationFK_Indexador_Correo = new global::System.Data.DataRelation("FK_Indexador_Correo", new global::System.Data.DataColumn[] {
                         this.tableCorreo.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexador.id_correoColumn}, false);
@@ -312,6 +341,10 @@ namespace correoElectronico {
                         this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndexadorBusqueda.id_ccColumn}, false);
             this.Relations.Add(this.relationFK_Indexador_Usuario2);
+            this.relationFK_Borrador_Usuario = new global::System.Data.DataRelation("FK_Borrador_Usuario", new global::System.Data.DataColumn[] {
+                        this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBorrador.id_propietarioColumn}, false);
+            this.Relations.Add(this.relationFK_Borrador_Usuario);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -335,6 +368,12 @@ namespace correoElectronico {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeIndexadorBusqueda() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeBorrador() {
             return false;
         }
         
@@ -404,6 +443,9 @@ namespace correoElectronico {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void IndexadorBusquedaRowChangeEventHandler(object sender, IndexadorBusquedaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void BorradorRowChangeEventHandler(object sender, BorradorRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1820,6 +1862,331 @@ namespace correoElectronico {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class BorradorDataTable : global::System.Data.TypedTableBase<BorradorRow> {
+            
+            private global::System.Data.DataColumn columnid;
+            
+            private global::System.Data.DataColumn columnid_propietario;
+            
+            private global::System.Data.DataColumn columndestino;
+            
+            private global::System.Data.DataColumn columnasunto;
+            
+            private global::System.Data.DataColumn columnmensaje;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorDataTable() {
+                this.TableName = "Borrador";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal BorradorDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected BorradorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn id_propietarioColumn {
+                get {
+                    return this.columnid_propietario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn destinoColumn {
+                get {
+                    return this.columndestino;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn asuntoColumn {
+                get {
+                    return this.columnasunto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn mensajeColumn {
+                get {
+                    return this.columnmensaje;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow this[int index] {
+                get {
+                    return ((BorradorRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event BorradorRowChangeEventHandler BorradorRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event BorradorRowChangeEventHandler BorradorRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event BorradorRowChangeEventHandler BorradorRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event BorradorRowChangeEventHandler BorradorRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddBorradorRow(BorradorRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow AddBorradorRow(UsuarioRow parentUsuarioRowByFK_Borrador_Usuario, string destino, string asunto, string mensaje) {
+                BorradorRow rowBorradorRow = ((BorradorRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        destino,
+                        asunto,
+                        mensaje};
+                if ((parentUsuarioRowByFK_Borrador_Usuario != null)) {
+                    columnValuesArray[1] = parentUsuarioRowByFK_Borrador_Usuario[0];
+                }
+                rowBorradorRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBorradorRow);
+                return rowBorradorRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow FindByid(int id) {
+                return ((BorradorRow)(this.Rows.Find(new object[] {
+                            id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                BorradorDataTable cln = ((BorradorDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new BorradorDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnid = base.Columns["id"];
+                this.columnid_propietario = base.Columns["id_propietario"];
+                this.columndestino = base.Columns["destino"];
+                this.columnasunto = base.Columns["asunto"];
+                this.columnmensaje = base.Columns["mensaje"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columnid_propietario = new global::System.Data.DataColumn("id_propietario", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_propietario);
+                this.columndestino = new global::System.Data.DataColumn("destino", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndestino);
+                this.columnasunto = new global::System.Data.DataColumn("asunto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnasunto);
+                this.columnmensaje = new global::System.Data.DataColumn("mensaje", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmensaje);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
+                this.columnid_propietario.AllowDBNull = false;
+                this.columndestino.MaxLength = 25;
+                this.columnasunto.MaxLength = 35;
+                this.columnmensaje.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow NewBorradorRow() {
+                return ((BorradorRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new BorradorRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(BorradorRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.BorradorRowChanged != null)) {
+                    this.BorradorRowChanged(this, new BorradorRowChangeEvent(((BorradorRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.BorradorRowChanging != null)) {
+                    this.BorradorRowChanging(this, new BorradorRowChangeEvent(((BorradorRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.BorradorRowDeleted != null)) {
+                    this.BorradorRowDeleted(this, new BorradorRowChangeEvent(((BorradorRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.BorradorRowDeleting != null)) {
+                    this.BorradorRowDeleting(this, new BorradorRowChangeEvent(((BorradorRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveBorradorRow(BorradorRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetUmail ds = new DataSetUmail();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "BorradorDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class UsuarioRow : global::System.Data.DataRow {
@@ -1929,6 +2296,17 @@ namespace correoElectronico {
                 }
                 else {
                     return ((IndexadorBusquedaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Indexador_Usuario2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow[] GetBorradorRows() {
+                if ((this.Table.ChildRelations["FK_Borrador_Usuario"] == null)) {
+                    return new BorradorRow[0];
+                }
+                else {
+                    return ((BorradorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Borrador_Usuario"])));
                 }
             }
         }
@@ -2287,6 +2665,138 @@ namespace correoElectronico {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class BorradorRow : global::System.Data.DataRow {
+            
+            private BorradorDataTable tableBorrador;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal BorradorRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableBorrador = ((BorradorDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id {
+                get {
+                    return ((int)(this[this.tableBorrador.idColumn]));
+                }
+                set {
+                    this[this.tableBorrador.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id_propietario {
+                get {
+                    return ((int)(this[this.tableBorrador.id_propietarioColumn]));
+                }
+                set {
+                    this[this.tableBorrador.id_propietarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string destino {
+                get {
+                    try {
+                        return ((string)(this[this.tableBorrador.destinoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'destino\' de la tabla \'Borrador\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBorrador.destinoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string asunto {
+                get {
+                    try {
+                        return ((string)(this[this.tableBorrador.asuntoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'asunto\' de la tabla \'Borrador\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBorrador.asuntoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string mensaje {
+                get {
+                    try {
+                        return ((string)(this[this.tableBorrador.mensajeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'mensaje\' de la tabla \'Borrador\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBorrador.mensajeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UsuarioRow UsuarioRow {
+                get {
+                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Borrador_Usuario"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Borrador_Usuario"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdestinoNull() {
+                return this.IsNull(this.tableBorrador.destinoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdestinoNull() {
+                this[this.tableBorrador.destinoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsasuntoNull() {
+                return this.IsNull(this.tableBorrador.asuntoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetasuntoNull() {
+                this[this.tableBorrador.asuntoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsmensajeNull() {
+                return this.IsNull(this.tableBorrador.mensajeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetmensajeNull() {
+                this[this.tableBorrador.mensajeColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2408,6 +2918,40 @@ namespace correoElectronico {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndexadorBusquedaRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class BorradorRowChangeEvent : global::System.EventArgs {
+            
+            private BorradorRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRowChangeEvent(BorradorRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BorradorRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3189,7 +3733,8 @@ namespace correoElectronico.DataSetUmailTableAdapters {
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0)
+ORDER BY Correo.fecha DESC";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
@@ -3199,7 +3744,8 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)
+ORDER BY Correo.fecha DESC";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
@@ -3209,7 +3755,8 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1)
+ORDER BY Correo.fecha DESC";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
@@ -3219,7 +3766,8 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0)
+ORDER BY Correo.fecha DESC";
             this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[12] = new global::System.Data.SqlClient.SqlCommand();
@@ -3649,7 +4197,7 @@ FROM            Correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
 WHERE        Indexador.id_propietario = @idUsuario AND Indexador.archivado = 1 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
                          Usuario.apellido = @apellido OR
-                         Correo.asunto = @asunto)";
+                         Correo.asunto = @asunto) ORDER BY Correo.fecha DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3662,7 +4210,7 @@ WHERE        Indexador.id_propietario = @idUsuario AND Indexador.archivado = 1 A
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.archivado = 1) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha) ORDER BY Correo.fecha DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3675,7 +4223,7 @@ FROM            Correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
 WHERE        Indexador.id_propietario = @idUsuario AND Indexador.papelera = 1 AND (Usuario.nombre = @nombre OR
                          Usuario.apellido = @apellido OR
-                         Correo.asunto = @asunto)";
+                         Correo.asunto = @asunto) ORDER BY Correo.fecha DESC";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3688,7 +4236,7 @@ WHERE        Indexador.id_propietario = @idUsuario AND Indexador.papelera = 1 AN
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.papelera = 1) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha) ORDER BY Correo.fecha DESC";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3701,7 +4249,7 @@ FROM            Correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
 WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 0 AND Indexador.enviado = 1 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
                          Usuario.apellido = @apellido OR
-                         Correo.asunto = @asunto)";
+                         Correo.asunto = @asunto) ORDER BY Correo.fecha DESC";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3714,7 +4262,7 @@ WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 0 AN
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 0) AND (Indexador.enviado = 1) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha) ORDER BY Correo.fecha DESC";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3727,7 +4275,7 @@ FROM            Correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
 WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 1 AND Indexador.enviado = 0 AND Indexador.archivado = 0 AND Indexador.papelera = 0 AND (Usuario.nombre = @nombre OR
                          Usuario.apellido = @apellido OR
-                         Correo.asunto = @asunto)";
+                         Correo.asunto = @asunto) ORDER BY Correo.fecha DESC";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3740,7 +4288,7 @@ WHERE        Indexador.id_propietario = @idUsuario AND Indexador.recibido = 1 AN
 FROM            Correo INNER JOIN
                          Indexador ON Correo.id = Indexador.id_correo INNER JOIN
                          Usuario ON Indexador.id_cc = Usuario.id
-WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha)";
+WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1) AND (Indexador.enviado = 0) AND (Indexador.archivado = 0) AND (Indexador.papelera = 0) AND (CONVERT(VARCHAR, Correo.fecha, 105) = @fecha) ORDER BY Correo.fecha DESC";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3945,6 +4493,167 @@ WHERE        (Indexador.id_propietario = @idUsuario) AND (Indexador.recibido = 1
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha));
             }
             DataSetUmail.IndexadorBusquedaDataTable dataTable = new DataSetUmail.IndexadorBusquedaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class BorradorTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public BorradorTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Borrador";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("id_propietario", "id_propietario");
+            tableMapping.ColumnMappings.Add("destino", "destino");
+            tableMapping.ColumnMappings.Add("asunto", "asunto");
+            tableMapping.ColumnMappings.Add("mensaje", "mensaje");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["UmailConnectionString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        id, id_propietario, destino, asunto, mensaje\r\nFROM            Borra" +
+                "dor\r\nWHERE        (id_propietario = @idUsuario)\r\nORDER BY id DESC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idUsuario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_propietario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSetUmail.BorradorDataTable ObtenerBorradores(int idUsuario) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idUsuario));
+            DataSetUmail.BorradorDataTable dataTable = new DataSetUmail.BorradorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

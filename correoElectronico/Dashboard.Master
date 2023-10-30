@@ -108,14 +108,14 @@
                             </a>
                         </li>
 
-                        <li class="page-item">
+                        <%--<li class="page-item">
                             <a href="./Borradores.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">
                                 <div class="w-100 px-1 py-0" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Borradores" data-bs-placement="right" data-bs-delay='{"show": 600, "hide": 0}'>
                                     <i class="fa-solid fa-file fs-5 rounded-5 p-3 hover-sidebar icon-item"></i>
                                     <span class="span-item me-3 d-none">Borradores</span>
                                 </div>
                             </a>
-                        </li>
+                        </li>--%>
 
                         <li class="page-item">
                             <a href="./Archivados.aspx" class="rounded-5 bg-transparent text-white container-item text-decoration-none d-flex">

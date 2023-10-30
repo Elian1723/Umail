@@ -241,6 +241,7 @@
     <Content Include="scripts\main.js" />
     <Content Include="scripts\modal.js" />
     <Content Include="scripts\toast.js" />
+    <Content Include="scripts\validate-borrador.js" />
     <Content Include="scripts\validate.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="style.css" />

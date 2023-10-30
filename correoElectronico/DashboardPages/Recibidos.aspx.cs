@@ -34,7 +34,10 @@ namespace correoElectronico.DashboardPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarCorreos();
+            if (!IsPostBack)
+            {
+                CargarCorreos();
+            }
         }
 
         protected void ToggleLeido(int index)
@@ -102,11 +105,6 @@ namespace correoElectronico.DashboardPages
         {
             try
             {
-                if (GridViewCorreos.Rows[index].Cells[2].Text == "False")
-                {
-                    int idCorreo = Convert.ToInt32(GridViewCorreos.Rows[index].Cells[1].Text);
-                    adaptadorIndexador.ToggleLeido(true, Convert.ToInt32(Session["Id"]), idCorreo);
-                }
 
                 DataTable usuarioDestino = adaptadorUsuario.BuscarUsuarioPorId(Convert.ToInt32(GridViewCorreos.Rows[index].Cells[0].Text));
 
@@ -117,7 +115,13 @@ namespace correoElectronico.DashboardPages
                 LabelMensaje.Text = GridViewCorreos.Rows[index].Cells[7].Text;
                 LabelIDCorreo.Text = $"ID: {GridViewCorreos.Rows[index].Cells[1].Text}";
 
-                CargarCorreos();
+                if (GridViewCorreos.Rows[index].Cells[2].Text == "False")
+                {
+                    int idCorreo = Convert.ToInt32(GridViewCorreos.Rows[index].Cells[1].Text);
+                    adaptadorIndexador.ToggleLeido(true, Convert.ToInt32(Session["Id"]), idCorreo);
+                    CargarCorreos();
+                }
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "showModalCorreo", "showModalCorreo();", true);
             }
             catch (Exception ex)

@@ -14,6 +14,7 @@ namespace correoElectronico
         UsuarioTableAdapter adaptadorUsuario = new UsuarioTableAdapter();
         CorreoTableAdapter adaptadorCorreo = new CorreoTableAdapter();
         IndexadorTableAdapter adaptadorIndexador = new IndexadorTableAdapter();
+        BorradorTableAdapter adaptadorBorrador = new BorradorTableAdapter();
 
         protected void ValidarRedactar()
         {
@@ -22,6 +23,50 @@ namespace correoElectronico
                 string destino = Request["address"];
                 string asunto = Request["subject"];
                 string mensaje = Request["message"];
+
+                if (!string.IsNullOrEmpty(destino.ToString()) && !string.IsNullOrEmpty(asunto.Trim()) && !string.IsNullOrEmpty(mensaje.Trim()))
+                {
+
+                    if (adaptadorUsuario.BuscarUsuario(destino).Rows.Count > 0)
+                    {
+                        if (mensaje.Length > 500)
+                        {
+                            Response.AddHeader("X-Test-Header", "mensajeLargo");
+                            Response.Write("error");
+                        }
+                        else
+                        {
+                            int idDestino = Convert.ToInt32(adaptadorUsuario.BuscarUsuario(destino).Rows[0]["id"]);
+                            int idRemitente = Convert.ToInt32(Session["Id"]);
+                            DateTime fecha = DateTime.Now;
+
+                            DataTable tablaID = adaptadorCorreo.ObtenerUltimoID();
+                            int newID = Convert.ToInt32(tablaID.Rows[0]["id"]) == 0 ? 0 : Convert.ToInt32(tablaID.Rows[0]["id"]) + 1;
+
+                            adaptadorCorreo.InsertarCorreo(newID, asunto, fecha, mensaje);
+                            adaptadorIndexador.InsertarIndexador(idRemitente, idDestino, false, true, true, newID);
+                            adaptadorIndexador.InsertarIndexador(idDestino, idRemitente, true, false, false, newID);
+                        }
+                    }
+                    else
+                    {
+                        Response.AddHeader("X-Test-Header", "destinoNoExiste");
+                        Response.Write("error");
+                    }
+                }
+                else
+                {
+                    Response.AddHeader("X-Test-Header", "camposVacios");
+                    Response.Write("error");
+                }
+            }
+
+            if (Request.Headers["X-Test-Header"] != null && Request.Headers["X-Test-Header"] == "enviar-borrador")
+            {
+                string destino = Request["address"];
+                string asunto = Request["subject"];
+                string mensaje = Request["message"];
+                string id = Request["id"];
 
                 if (!string.IsNullOrEmpty(destino.ToString()) && !string.IsNullOrEmpty(asunto.Trim()) && !string.IsNullOrEmpty(mensaje.Trim()))
                 {

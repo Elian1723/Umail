@@ -15,3 +15,18 @@ function showModalRedactar(destino, asunto) {
     const textBoxAsunto = document.getElementById("TextBoxAsunto");
     textBoxAsunto.value = asunto;
 }
+
+function showModalEditar(destino, asunto, mensaje) {
+    const myModal = document.getElementById('modalRedactar');
+    const modal = new bootstrap.Modal(myModal);
+    modal.show();
+
+    const textBoxDestino = document.getElementById("TextBoxDestino");
+    textBoxDestino.value = destino;
+
+    const textBoxAsunto = document.getElementById("TextBoxAsunto");
+    textBoxAsunto.value = asunto;
+
+    const textBoxMensaje = document.getElementById("TextBoxMensaje");
+    textBoxMensaje.value = mensaje;
+}
