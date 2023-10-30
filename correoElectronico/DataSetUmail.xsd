@@ -643,26 +643,26 @@ ORDER BY id DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Borrador" msprop:Generator_RowEvHandlerName="BorradorRowChangeEventHandler" msprop:Generator_RowDeletedName="BorradorRowDeleted" msprop:Generator_RowDeletingName="BorradorRowDeleting" msprop:Generator_RowEvArgName="BorradorRowChangeEvent" msprop:Generator_TablePropName="Borrador" msprop:Generator_RowChangedName="BorradorRowChanged" msprop:Generator_RowChangingName="BorradorRowChanging" msprop:Generator_TableClassName="BorradorDataTable" msprop:Generator_RowClassName="BorradorRow" msprop:Generator_TableVarName="tableBorrador" msprop:Generator_UserTableName="Borrador">
+        <xs:element name="Borrador" msprop:Generator_RowClassName="BorradorRow" msprop:Generator_RowEvHandlerName="BorradorRowChangeEventHandler" msprop:Generator_RowDeletedName="BorradorRowDeleted" msprop:Generator_RowDeletingName="BorradorRowDeleting" msprop:Generator_RowEvArgName="BorradorRowChangeEvent" msprop:Generator_TablePropName="Borrador" msprop:Generator_RowChangedName="BorradorRowChanged" msprop:Generator_UserTableName="Borrador" msprop:Generator_RowChangingName="BorradorRowChanging" msprop:Generator_TableClassName="BorradorDataTable" msprop:Generator_TableVarName="tableBorrador">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="id_propietario" msprop:Generator_ColumnPropNameInRow="id_propietario" msprop:Generator_ColumnPropNameInTable="id_propietarioColumn" msprop:Generator_ColumnVarNameInTable="columnid_propietario" msprop:Generator_UserColumnName="id_propietario" type="xs:int" />
-              <xs:element name="destino" msprop:Generator_ColumnPropNameInRow="destino" msprop:Generator_ColumnPropNameInTable="destinoColumn" msprop:Generator_ColumnVarNameInTable="columndestino" msprop:Generator_UserColumnName="destino" minOccurs="0">
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" />
+              <xs:element name="id_propietario" msprop:Generator_UserColumnName="id_propietario" msprop:Generator_ColumnPropNameInTable="id_propietarioColumn" msprop:Generator_ColumnPropNameInRow="id_propietario" msprop:Generator_ColumnVarNameInTable="columnid_propietario" type="xs:int" />
+              <xs:element name="destino" msprop:Generator_UserColumnName="destino" msprop:Generator_ColumnPropNameInTable="destinoColumn" msprop:Generator_ColumnPropNameInRow="destino" msprop:Generator_ColumnVarNameInTable="columndestino" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="asunto" msprop:Generator_ColumnPropNameInRow="asunto" msprop:Generator_ColumnPropNameInTable="asuntoColumn" msprop:Generator_ColumnVarNameInTable="columnasunto" msprop:Generator_UserColumnName="asunto" minOccurs="0">
+              <xs:element name="asunto" msprop:Generator_UserColumnName="asunto" msprop:Generator_ColumnPropNameInTable="asuntoColumn" msprop:Generator_ColumnPropNameInRow="asunto" msprop:Generator_ColumnVarNameInTable="columnasunto" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="35" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="mensaje" msprop:Generator_ColumnPropNameInRow="mensaje" msprop:Generator_ColumnPropNameInTable="mensajeColumn" msprop:Generator_ColumnVarNameInTable="columnmensaje" msprop:Generator_UserColumnName="mensaje" minOccurs="0">
+              <xs:element name="mensaje" msprop:Generator_UserColumnName="mensaje" msprop:Generator_ColumnPropNameInTable="mensajeColumn" msprop:Generator_ColumnPropNameInRow="mensaje" msprop:Generator_ColumnVarNameInTable="columnmensaje" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
@@ -689,11 +689,11 @@ ORDER BY id DESC</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Indexador_Correo" msdata:parent="Correo" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Correo" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_UserRelationName="FK_Indexador_Correo" msprop:Generator_ParentPropName="CorreoRow" />
-      <msdata:Relationship name="FK_Indexador_Usuario21" msdata:parent="Usuario" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario21" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_UserRelationName="FK_Indexador_Usuario21" msprop:Generator_ParentPropName="UsuarioRow" />
-      <msdata:Relationship name="FK_Indexador_Correo1" msdata:parent="Correo" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Correo1" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_ParentPropName="CorreoRow" msprop:Generator_UserRelationName="FK_Indexador_Correo1" />
-      <msdata:Relationship name="FK_Indexador_Usuario2" msdata:parent="Usuario" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario2" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_ParentPropName="UsuarioRow" msprop:Generator_UserRelationName="FK_Indexador_Usuario2" />
-      <msdata:Relationship name="FK_Borrador_Usuario" msdata:parent="Usuario" msdata:child="Borrador" msdata:parentkey="id" msdata:childkey="id_propietario" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Borrador" msprop:Generator_RelationVarName="relationFK_Borrador_Usuario" msprop:Generator_ChildPropName="GetBorradorRows" msprop:Generator_ParentPropName="UsuarioRow" msprop:Generator_UserRelationName="FK_Borrador_Usuario" />
+      <msdata:Relationship name="FK_Indexador_Correo" msdata:parent="Correo" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Correo" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_ParentPropName="CorreoRow" msprop:Generator_UserRelationName="FK_Indexador_Correo" />
+      <msdata:Relationship name="FK_Indexador_Usuario21" msdata:parent="Usuario" msdata:child="Indexador" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Indexador" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario21" msprop:Generator_ChildPropName="GetIndexadorRows" msprop:Generator_ParentPropName="UsuarioRow" msprop:Generator_UserRelationName="FK_Indexador_Usuario21" />
+      <msdata:Relationship name="FK_Indexador_Correo1" msdata:parent="Correo" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_correo" msprop:Generator_UserParentTable="Correo" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Correo1" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_UserRelationName="FK_Indexador_Correo1" msprop:Generator_ParentPropName="CorreoRow" />
+      <msdata:Relationship name="FK_Indexador_Usuario2" msdata:parent="Usuario" msdata:child="IndexadorBusqueda" msdata:parentkey="id" msdata:childkey="id_cc" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="IndexadorBusqueda" msprop:Generator_RelationVarName="relationFK_Indexador_Usuario2" msprop:Generator_ChildPropName="GetIndexadorBusquedaRows" msprop:Generator_UserRelationName="FK_Indexador_Usuario2" msprop:Generator_ParentPropName="UsuarioRow" />
+      <msdata:Relationship name="FK_Borrador_Usuario" msdata:parent="Usuario" msdata:child="Borrador" msdata:parentkey="id" msdata:childkey="id_propietario" msprop:Generator_UserParentTable="Usuario" msprop:Generator_UserChildTable="Borrador" msprop:Generator_RelationVarName="relationFK_Borrador_Usuario" msprop:Generator_ChildPropName="GetBorradorRows" msprop:Generator_UserRelationName="FK_Borrador_Usuario" msprop:Generator_ParentPropName="UsuarioRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
